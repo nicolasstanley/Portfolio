@@ -36,11 +36,6 @@ export default function About({ aboutMe }: AboutProps) {
                     <p className="text-gray-600">Years Experience</p>
                   </div>
                 )}
-                
-                <div>
-                  <h3 className="text-2xl font-bold text-primary-600">50+</h3>
-                  <p className="text-gray-600">Projects Completed</p>
-                </div>
               </div>
             </div>
             

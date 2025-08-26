@@ -103,3 +103,43 @@ export async function getProject(slug: string): Promise<Project | null> {
     throw new Error('Failed to fetch project');
   }
 }
+
+// Update work experience entry
+export async function updateWorkExperience(id: string, data: Partial<WorkExperience>): Promise<WorkExperience> {
+  try {
+    const response = await cosmic.objects.updateOne(id, {
+      title: data.title,
+      slug: data.slug,
+      metadata: data.metadata,
+    });
+    
+    return response.object as WorkExperience;
+  } catch (error) {
+    throw new Error(`Failed to update work experience: ${error}`);
+  }
+}
+
+// Create new work experience entry
+export async function createWorkExperience(data: Omit<WorkExperience, 'id'>): Promise<WorkExperience> {
+  try {
+    const response = await cosmic.objects.insertOne({
+      title: data.title,
+      slug: data.slug,
+      type: 'work-experience',
+      metadata: data.metadata,
+    });
+    
+    return response.object as WorkExperience;
+  } catch (error) {
+    throw new Error(`Failed to create work experience: ${error}`);
+  }
+}
+
+// Delete work experience entry
+export async function deleteWorkExperience(id: string): Promise<void> {
+  try {
+    await cosmic.objects.deleteOne(id);
+  } catch (error) {
+    throw new Error(`Failed to delete work experience: ${error}`);
+  }
+}

@@ -29,7 +29,7 @@ export default function Navigation() {
       <div className="container">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="font-bold text-lg text-gray-900">
-            Sarah Johnson
+            Nicolas Ménard
           </Link>
           
           <div className="hidden md:flex space-x-8">

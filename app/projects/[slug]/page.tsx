@@ -28,10 +28,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
   
   return {
-    title: `${project.metadata?.project_name || project.title} - Sarah Johnson`,
+    title: `${project.metadata?.project_name || project.title} - Nicolas Ménard`,
     description: project.metadata?.description || `Portfolio project: ${project.title}`,
     openGraph: {
-      title: `${project.metadata?.project_name || project.title} - Sarah Johnson`,
+      title: `${project.metadata?.project_name || project.title} - Nicolas Ménard`,
       description: project.metadata?.description || `Portfolio project: ${project.title}`,
       images: project.metadata?.featured_image ? [
         {

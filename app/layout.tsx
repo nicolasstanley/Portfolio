@@ -6,13 +6,13 @@ import CosmicBadge from '@/components/CosmicBadge'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Sarah Johnson - UX Designer Portfolio',
-  description: 'Senior UX Designer & Design Systems Specialist with 5+ years of experience creating user-centered digital experiences.',
+  title: 'Nicolas Ménard - UX Designer & Researcher',
+  description: 'UX Designer & Researcher with 10 years of experience in User Experience creating user-centered digital experiences.',
   keywords: 'UX Designer, Design Systems, User Experience, Portfolio, UI Design, User Research',
-  authors: [{ name: 'Sarah Johnson' }],
+  authors: [{ name: 'Nicolas Ménard' }],
   openGraph: {
-    title: 'Sarah Johnson - UX Designer Portfolio',
-    description: 'Senior UX Designer & Design Systems Specialist with 5+ years of experience creating user-centered digital experiences.',
+    title: 'Nicolas Ménard - UX Designer & Researcher',
+    description: 'UX Designer & Researcher with 10+ years of experience creating user-centered digital experiences.',
     type: 'website',
   },
 }
