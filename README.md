@@ -1,8 +1,6 @@
 # UX Designer Portfolio
 
-![UX Portfolio Preview](https://imgix.cosmicjs.com/f7797120-a455-11ed-81f2-f50e185dd248-U7NLcNo9NGA.jpg?w=1200&h=300&fit=crop&auto=format,compress)
-
-A professional portfolio website for Sarah Johnson, a Senior UX Designer & Design Systems Specialist. Built with Next.js and powered by Cosmic CMS, this portfolio showcases projects, work experience, skills, and professional information in a clean, modern interface.
+A professional portfolio website for Nicolas Ménard, a Senior UX Designer & Researcher. Built with Next.js and powered by Cosmic CMS, this portfolio showcases projects, work experience, skills, and professional information in a clean, modern interface.
 
 ## Features
 
