@@ -1,0 +1,46 @@
+diff --git a/node_modules/proxy-from-env/index.js b/node_modules/proxy-from-env/index.js
+index df75004..1df67c3 100644
+--- a/node_modules/proxy-from-env/index.js
++++ b/node_modules/proxy-from-env/index.js
+@@ -1,6 +1,23 @@
+ 'use strict';
+ 
+-var parseUrl = require('url').parse;
++// Use WHATWG URL API instead of deprecated url.parse
++function parseUrl(url) {
++  try {
++    var urlObj = new URL(url);
++    return {
++      protocol: urlObj.protocol,
++      host: urlObj.host,
++      hostname: urlObj.hostname,
++      port: urlObj.port || '',
++      pathname: urlObj.pathname,
++      search: urlObj.search,
++      hash: urlObj.hash
++    };
++  } catch (err) {
++    // Fallback for invalid URLs
++    return {};
++  }
++}
+ 
+ var DEFAULT_PORTS = {
+   ftp: 21,
+@@ -22,7 +39,15 @@ var stringEndsWith = String.prototype.endsWith || function(s) {
+  *  given URL. If no proxy is set, this will be an empty string.
+  */
+ function getProxyForUrl(url) {
+-  var parsedUrl = typeof url === 'string' ? parseUrl(url) : url || {};
++  var parsedUrl;
++  if (typeof url === 'string') {
++    parsedUrl = parseUrl(url);
++  } else if (url && typeof url === 'object') {
++    // If it's already a URL object, use it as-is
++    parsedUrl = url;
++  } else {
++    parsedUrl = {};
++  }
+   var proto = parsedUrl.protocol;
+   var hostname = parsedUrl.host;
+   var port = parsedUrl.port;

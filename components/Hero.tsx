@@ -81,7 +81,7 @@ export default function Hero({ aboutMe }: HeroProps) {
       {/* Three.js Canvas with Fluid Background */}
       <div className="absolute inset-0 w-full h-full z-0">
         <Canvas
-          camera={{ position: [0, 0, 2], fov: 50 }}
+          camera={{ position: [0, 0, 2], fov: 100 }}
           gl={{ alpha: true, antialias: true, preserveDrawingBuffer: true }}
           style={{ 
             background: 'transparent',
@@ -101,54 +101,13 @@ export default function Hero({ aboutMe }: HeroProps) {
       
       {/* Content */}
       <div className="container relative z-10 pointer-events-none">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8 animate-fade-in">
-            {metadata?.profile_image && (
-              <img
-                src={`${metadata.profile_image.imgix_url}?w=300&h=300&fit=crop&auto=format,compress`}
-                alt={metadata?.full_name || 'Profile'}
-                width="150"
-                height="150"
-                className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8 shadow-lg object-cover"
-              />
-            )}
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4">
-              {metadata?.full_name || 'Welcome'}
-            </h1>
-            
-            {metadata?.professional_title && (
-              <h2 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 font-light">
-                {metadata.professional_title}
-              </h2>
-            )}
-            
-            {metadata?.location && (
-              <p className="text-lg text-gray-500 mb-8">
-                📍 {metadata.location}
-              </p>
-            )}
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 pointer-events-auto">
-              <button
-                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-primary px-8 py-3 text-lg"
-              >
-                View My Work
-              </button>
-              
-              <button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-secondary px-8 py-3 text-lg"
-              >
-                Get In Touch
-              </button>
-            </div>
-          </div>
-          
-          <div className="pointer-events-auto">
-            <SocialLinks aboutMe={aboutMe} />
-          </div>
+        <div className="animate-fade-in">
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-light">
+            Hi, I'm Nicolas, a UX Designer & Researcher
+          </h2>
+          <p className="text-lg text-gray-500 max-w-2xl">
+            I design delightful, accessible experiences that solve real problems. Specializing in user research, prototyping, and end-to-end design for web and mobile.
+          </p>
         </div>
       </div>
     </section>

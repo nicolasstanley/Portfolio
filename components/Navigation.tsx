@@ -34,12 +34,6 @@ export default function Navigation() {
           
           <div className="hidden md:flex space-x-8">
             <button
-              onClick={() => scrollToSection('about')}
-              className="text-gray-700 hover:text-primary-600 transition-colors duration-200"
-            >
-              About
-            </button>
-            <button
               onClick={() => scrollToSection('projects')}
               className="text-gray-700 hover:text-primary-600 transition-colors duration-200"
             >
