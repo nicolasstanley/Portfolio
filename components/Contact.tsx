@@ -42,7 +42,7 @@ export default function Contact({ aboutMe }: ContactProps) {
           <div className="flex flex-col md:flex-row gap-12 items-start">
             <div className="animate-slide-up md:order-1">
               {metadata?.profile_image && (
-                <div className="relative w-64 md:w-80">
+                <div className="relative w-full md:w-80">
                   <img
                     src={`${metadata.profile_image.imgix_url}?w=400&auto=format,compress`}
                     alt={metadata?.full_name || 'Contact'}

@@ -22,7 +22,7 @@ export default function Experience({ experiences }: ExperienceProps) {
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl md:mx-0">
           <div className="space-y-8" role="list" aria-label="Work experience timeline">
             {experiences.map((experience, index) => (
               <div key={experience.id} role="listitem">

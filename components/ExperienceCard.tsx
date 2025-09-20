@@ -84,7 +84,7 @@ export default function ExperienceCard({ experience, isLast }: ExperienceCardPro
           <div>
             <h4 className="font-medium text-gray-900 mb-2">Key Achievements:</h4>
             <div 
-              className="prose max-w-none text-gray-700"
+              className="prose prose-ul:list-disc prose-li:ml-0 max-w-none text-gray-700"
               dangerouslySetInnerHTML={{ __html: metadata.key_achievements }}
             />
           </div>

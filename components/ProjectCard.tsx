@@ -57,8 +57,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" aria-hidden="true"></div>
         
         {/* Content overlay */}
-        <div className="absolute inset-0 flex flex-col justify-center p-8 text-white z-20">
-          <div className="max-w-[576px]">
+        <div className="absolute inset-0 flex flex-col justify-center p-4 sm:p-8 text-white z-20">
+          <div className="w-full max-w-md">
             {/* Project type badges */}
             {metadata?.project_type && (
               <div className="mb-4 flex flex-wrap gap-2">
@@ -85,7 +85,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             
             {/* Description */}
             {metadata?.description_short && (
-              <p className="text-base text-white mb-4 line-clamp-1 leading-6">
+              <p className="text-base text-white mb-4 leading-6">
                 {metadata.description_short}
               </p>
             )}
