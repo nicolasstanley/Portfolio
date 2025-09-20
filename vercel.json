@@ -1,0 +1,16 @@
+{
+  "buildCommand": "bun run build",
+  "installCommand": "bun install",
+  "framework": "nextjs",
+  "functions": {
+    "app/**/*.ts": {
+      "includeFiles": "**"
+    }
+  },
+  "env": {
+    "COSMIC_BUCKET_SLUG": "@cosmic_bucket_slug",
+    "COSMIC_READ_KEY": "@cosmic_read_key",
+    "NEXT_PUBLIC_COSMIC_BUCKET_SLUG": "@cosmic_bucket_slug",
+    "NEXT_PUBLIC_COSMIC_READ_KEY": "@cosmic_read_key"
+  }
+}

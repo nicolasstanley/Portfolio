@@ -3,7 +3,9 @@ const nextConfig = {
   images: {
     domains: [
       'cdn.cosmicjs.com',
-      'imgix.cosmicjs.com'
+      'imgix.cosmicjs.com',
+      'images.unsplash.com',
+      'res.cloudinary.com'
     ],
     remotePatterns: [
       {
@@ -13,6 +15,14 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'imgix.cosmicjs.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com'
       }
     ]
   },
@@ -21,7 +31,13 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: false
-  }
+  },
+  // Vercel optimizations
+  experimental: {
+    optimizePackageImports: ['@vercel/speed-insights']
+  },
+  // Ensure static generation works properly
+  output: 'standalone'
 }
 
 module.exports = nextConfig

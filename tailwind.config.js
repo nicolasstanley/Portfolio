@@ -13,8 +13,8 @@ module.exports = {
         primary: {
           50: '#f0f9ff',
           500: '#3b82f6',
-          600: '#6D5AFF',
-          700: '#5D4FE8',
+          600: '#252df1',
+          700: '#1e25c7',
         },
         gray: {
           50: '#f9fafb',
