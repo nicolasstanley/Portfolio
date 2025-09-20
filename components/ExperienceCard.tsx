@@ -23,20 +23,10 @@ export default function ExperienceCard({ experience, isLast }: ExperienceCardPro
   }
 
   return (
-    <article className="relative flex items-start" role="article">
-      {/* Timeline line */}
-      {!isLast && (
-        <div className="absolute left-6 top-16 w-0.5 h-full bg-gray-200" aria-hidden="true"></div>
-      )}
-      
-      {/* Timeline dot */}
-      <div className="flex-shrink-0 w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mr-8 relative z-10" aria-hidden="true">
-        <div className="w-4 h-4 bg-white rounded-full"></div>
-      </div>
-      
+    <article className="relative" role="article">
       {/* Content */}
       <div 
-        className="flex-1 card focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:outline-none transition-all duration-300" 
+        className="card focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:outline-none transition-all duration-300" 
         tabIndex={0}
       >
         <div className="flex items-start justify-between mb-4">
