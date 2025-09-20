@@ -1,15 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-import CosmicBadge from '@/components/CosmicBadge'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Nicolas Ménard - UX Designer & Researcher',
   description: 'UX Designer & Researcher with 10 years of experience in User Experience creating user-centered digital experiences.',
   keywords: 'UX Designer, Design Systems, User Experience, Portfolio, UI Design, User Research',
   authors: [{ name: 'Nicolas Ménard' }],
+  viewport: 'width=device-width, initial-scale=1',
   openGraph: {
     title: 'Nicolas Ménard - UX Designer & Researcher',
     description: 'UX Designer & Researcher with 10+ years of experience creating user-centered digital experiences.',
@@ -22,19 +19,23 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // Access environment variable on server side
-  const bucketSlug = process.env.COSMIC_BUCKET_SLUG as string
-
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        
+        {/* Favicons */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        
         {/* Console capture script for dashboard debugging */}
         <script src="/dashboard-console-capture.js" />
       </head>
-      <body className={`${inter.className} bg-gray-50 text-gray-900`}>
+      <body className="bg-gray-50 text-gray-900">
         {children}
-        {/* Pass bucket slug as prop to client component */}
-        <CosmicBadge bucketSlug={bucketSlug} />
       </body>
     </html>
   )

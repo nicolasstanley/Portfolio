@@ -1,43 +1,71 @@
-import { getAboutMe, getWorkExperience, getSkills, getProjects } from '@/lib/cosmic'
-import Hero from '@/components/Hero'
-import Projects from '@/components/Projects'
-import Experience from '@/components/Experience'
-import Skills from '@/components/Skills'
-import Contact from '@/components/Contact'
+import { getAboutMe, getWorkExperience, getProjects } from '@/lib/cosmic'
+import HomePage from '@/components/HomePage'
 import Navigation from '@/components/Navigation'
 
-export default async function HomePage() {
-  // Fetch all data in parallel
-  const [aboutMe, workExperience, skills, projects] = await Promise.all([
-    getAboutMe(),
-    getWorkExperience(),
-    getSkills(),
-    getProjects()
-  ])
+export default async function Page() {
+  try {
+    // Fetch all data in parallel with error handling
+    const [aboutMe, workExperience, projects] = await Promise.all([
+      getAboutMe().catch(() => null),
+      getWorkExperience().catch(() => []),
+      getProjects().catch(() => [])
+    ])
 
-  return (
-    <div className="min-h-screen">
-      <Navigation />
-      
-      {aboutMe && (
-        <Hero aboutMe={aboutMe} />
-      )}
-      
-      {projects.length > 0 && (
-        <Projects projects={projects} />
-      )}
-      
-      {workExperience.length > 0 && (
-        <Experience experiences={workExperience} />
-      )}
-      
-      {skills.length > 0 && (
-        <Skills skills={skills} />
-      )}
-      
-      {aboutMe && (
-        <Contact aboutMe={aboutMe} />
-      )}
-    </div>
-  )
+    return (
+      <div className="min-h-screen">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <Navigation />
+        <main id="main-content" role="main">
+          <HomePage 
+            aboutMe={aboutMe}
+            workExperience={workExperience}
+            projects={projects}
+          />
+        </main>
+      </div>
+    )
+  } catch (error) {
+    console.error('Error loading page:', error)
+    // Fallback: show hero with placeholder sections
+    return (
+      <div className="min-h-screen">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <Navigation />
+        <main id="main-content" role="main">
+        <HomePage 
+          aboutMe={null}
+          workExperience={[]}
+          projects={[]}
+        />
+        
+        {/* Placeholder sections when data fails */}
+        <section id="work" className="py-16 bg-white">
+          <div className="container">
+            <h2 className="text-3xl font-bold text-center mb-12">Work</h2>
+            <p className="text-center text-gray-600">Loading work...</p>
+          </div>
+        </section>
+        
+        <section id="experience" className="py-16 bg-gray-50">
+          <div className="container">
+            <h2 className="text-3xl font-bold mb-12">Experience</h2>
+            <p className="text-gray-600">Loading experience...</p>
+          </div>
+        </section>
+        
+        
+        <section id="contact" className="py-16 bg-gray-50">
+          <div className="container">
+            <h2 className="text-3xl font-bold mb-12">Contact</h2>
+            <p className="text-gray-600">Loading contact information...</p>
+          </div>
+        </section>
+        </main>
+      </div>
+    )
+  }
 }

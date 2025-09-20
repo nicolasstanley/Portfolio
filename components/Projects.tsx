@@ -6,27 +6,31 @@ interface ProjectsProps {
 }
 
 export default function Projects({ projects }: ProjectsProps) {
-  if (!projects || projects.length === 0) {
-    return null
-  }
 
   return (
-    <section id="projects" className="section bg-gray-50">
+    <section id="work" className="section bg-gray-50" aria-labelledby="work-heading">
       <div className="container">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Featured Projects
+        <div className="mb-16">
+          <h2 id="work-heading" className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+            Work
           </h2>
-          <div className="w-20 h-1 bg-primary-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl">
             Here are some of my recent design projects that showcase my approach to solving complex user experience challenges.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+        <div className="grid md:grid-cols-2 gap-8" role="list" aria-label="Portfolio projects">
+          {projects && projects.length > 0 ? (
+            projects.map((project) => (
+              <div key={project.id} role="listitem">
+                <ProjectCard project={project} />
+              </div>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <p className="text-gray-600">Work projects will appear here soon.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

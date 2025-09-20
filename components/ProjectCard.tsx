@@ -7,68 +7,91 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const { metadata } = project
+  
+  // Use thumbnail metafield, then featured image, or fallback to Unsplash
+  const thumbnailUrl = metadata?.thumbnail
+  const isVideo = thumbnailUrl && typeof thumbnailUrl === 'string' && thumbnailUrl.toLowerCase().match(/\.(mp4|webm|ogg|mov)(\?.*)?$/)
+  
+  const backgroundImage = thumbnailUrl || metadata?.featured_image?.imgix_url 
+    ? `${thumbnailUrl || metadata.featured_image.imgix_url}?w=800&h=600&fit=crop&auto=format,compress`
+    : `https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop&auto=format,compress&q=80`
 
   return (
-    <div className="card group hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-      {metadata?.featured_image && (
-        <div className="mb-6 overflow-hidden rounded-lg">
-          <img
-            src={`${metadata.featured_image.imgix_url}?w=600&h=400&fit=crop&auto=format,compress`}
-            alt={metadata?.project_name || project.title}
-            width="300"
-            height="200"
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-      )}
-      
-      <div className="flex items-center gap-2 mb-3">
-        {metadata?.project_type && (
-          <span className="px-3 py-1 bg-primary-100 text-primary-700 text-sm font-medium rounded-full">
-            {metadata.project_type.value}
-          </span>
-        )}
-        {metadata?.project_duration && (
-          <span className="text-sm text-gray-500">
-            {metadata.project_duration}
-          </span>
-        )}
-      </div>
-      
-      <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-200">
-        {metadata?.project_name || project.title}
-      </h3>
-      
-      {metadata?.description && (
-        <p className="text-gray-600 mb-4 line-clamp-3">
-          {metadata.description}
-        </p>
-      )}
-      
-      {metadata?.tools_used && metadata.tools_used.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-6">
-          {metadata.tools_used.slice(0, 3).map((tool, index) => (
-            <span
-              key={index}
-              className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
+    <Link 
+      href={`/work/${project.slug}`} 
+      className="block group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-50 rounded-2xl transition-all duration-200"
+      aria-label={`View project: ${metadata?.project_name || project.title}`}
+      tabIndex={0}
+    >
+      <article className="relative h-[320px] rounded-2xl overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-2" role="article">
+        {/* Video background or image fallback */}
+        {isVideo ? (
+          <>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              aria-label={`Background video for ${metadata?.project_name || project.title} project`}
             >
-              {tool}
-            </span>
-          ))}
-          {metadata.tools_used.length > 3 && (
-            <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
-              +{metadata.tools_used.length - 3} more
-            </span>
-          )}
+              <source src={thumbnailUrl} type="video/mp4" />
+            </video>
+            {/* Video overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-black/60" aria-hidden="true"></div>
+          </>
+        ) : (
+          <div 
+            className="absolute inset-0 w-full h-full"
+            style={{
+              backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url(${backgroundImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+            role="img"
+            aria-label={`Background image for ${metadata?.project_name || project.title} project`}
+          ></div>
+        )}
+        
+        {/* Hover overlay - behind content */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" aria-hidden="true"></div>
+        
+        {/* Content overlay */}
+        <div className="absolute inset-0 flex flex-col justify-center p-8 text-white z-20">
+          <div className="max-w-[576px]">
+            {/* Project type badges */}
+            {metadata?.project_type && (
+              <div className="mb-4 flex flex-wrap gap-2">
+                {Array.isArray(metadata.project_type) 
+                  ? metadata.project_type.map((type, index) => (
+                      <span key={index} className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/30">
+                        {type}
+                      </span>
+                    ))
+                  : <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/30">
+                      {typeof metadata.project_type === 'object' && metadata.project_type !== null && 'value' in metadata.project_type
+                        ? metadata.project_type.value 
+                        : String(metadata.project_type)
+                      }
+                    </span>
+                }
+              </div>
+            )}
+            
+            {/* Title */}
+            <h2 className="text-xl font-medium mb-3 text-white leading-tight">
+              {metadata?.project_name || project.title}
+            </h2>
+            
+            {/* Description */}
+            {metadata?.description_short && (
+              <p className="text-base text-white mb-4 line-clamp-1 leading-6">
+                {metadata.description_short}
+              </p>
+            )}
+          </div>
         </div>
-      )}
-      
-      <Link
-        href={`/projects/${project.slug}`}
-        className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium group-hover:underline transition-colors duration-200"
-      >
-        View Case Study →
-      </Link>
-    </div>
+      </article>
+    </Link>
   )
 }

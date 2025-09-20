@@ -2,28 +2,57 @@ import { AboutMe } from '@/types'
 import SocialLinks from '@/components/SocialLinks'
 
 interface ContactProps {
-  aboutMe: AboutMe
+  aboutMe: AboutMe | null
 }
 
 export default function Contact({ aboutMe }: ContactProps) {
-  const { metadata } = aboutMe
+  const metadata = aboutMe?.metadata
+
+  // If no aboutMe data, show a fallback
+  if (!aboutMe || !metadata) {
+    return (
+      <section id="contact" className="section bg-white">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+              Get In Touch
+            </h2>
+            <div className="w-20 h-1 bg-primary-600 mx-auto mb-6"></div>
+            <p className="text-lg text-gray-600">
+              Contact information will be available soon.
+            </p>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="contact" className="section bg-white">
       <div className="container">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Get In Touch
-            </h2>
-            <div className="w-20 h-1 bg-primary-600 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              I'm always interested in discussing new opportunities, design challenges, and collaborative projects.
-            </p>
-          </div>
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+            Get In Touch
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl leading-6">
+            I'm always interested in discussing new opportunities, design challenges, and collaborative projects.
+          </p>
+        </div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-up">
+          <div className="flex flex-col md:flex-row gap-12 items-start">
+            <div className="animate-slide-up md:order-1">
+              {metadata?.profile_image && (
+                <div className="relative w-64 md:w-80">
+                  <img
+                    src={`${metadata.profile_image.imgix_url}?w=400&auto=format,compress`}
+                    alt={metadata?.full_name || 'Contact'}
+                    className="w-full h-auto object-contain rounded-lg shadow-lg"
+                  />
+                </div>
+              )}
+            </div>
+            
+            <div className="animate-slide-up flex-1 md:order-2">
               <div className="space-y-6">
                 {metadata?.email && (
                   <div className="flex items-center">
@@ -73,13 +102,12 @@ export default function Contact({ aboutMe }: ContactProps) {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Location</h3>
-                      <p className="text-gray-600">{metadata.location}</p>
+                      <p className="text-gray-600 leading-6">{metadata.location}</p>
                     </div>
                   </div>
                 )}
                 
                 <div className="pt-6 border-t border-gray-200">
-                  <h3 className="font-semibold text-gray-900 mb-4">Connect With Me</h3>
                   <SocialLinks aboutMe={aboutMe} />
                 </div>
                 
@@ -102,20 +130,7 @@ export default function Contact({ aboutMe }: ContactProps) {
                 )}
               </div>
             </div>
-            
-            <div className="animate-slide-up">
-              {metadata?.profile_image && (
-                <img
-                  src={`${metadata.profile_image.imgix_url}?w=800&h=600&fit=crop&auto=format,compress`}
-                  alt={metadata?.full_name || 'Contact'}
-                  width="400"
-                  height="300"
-                  className="w-full h-80 object-cover rounded-lg shadow-lg"
-                />
-              )}
-            </div>
           </div>
-        </div>
       </div>
     </section>
   )

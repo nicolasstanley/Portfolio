@@ -10,10 +10,22 @@ export default function SocialLinks({ aboutMe }: SocialLinksProps) {
   const socialLinks = [
     {
       name: 'LinkedIn',
-      url: metadata?.linkedin_url,
+      url: 'https://www.linkedin.com/in/nicolasstanleymenard',
+      showText: true,
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clipRule="evenodd" />
+        </svg>
+      )
+    },
+    {
+      name: 'Resume/CV',
+      url: metadata?.resume_cv?.url || metadata?.resume_cv?.imgix_url,
+      showText: true,
+      isDownload: true,
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       )
     },
@@ -48,20 +60,33 @@ export default function SocialLinks({ aboutMe }: SocialLinksProps) {
   ]
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex flex-wrap items-start gap-4" role="list" aria-label="Social media links">
       {socialLinks
         .filter(link => link.url)
         .map((link) => (
-          <a
-            key={link.name}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 bg-gray-100 hover:bg-primary-600 text-gray-600 hover:text-white rounded-lg flex items-center justify-center transition-all duration-200 transform hover:scale-105"
-            title={link.name}
-          >
-            {link.icon}
-          </a>
+          <div key={link.name} role="listitem">
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              {...(link.isDownload && { download: true })}
+              className={`${
+                link.showText 
+                  ? 'inline-flex items-center space-x-3 px-4 py-3 bg-gray-100 hover:bg-primary-600 text-gray-600 hover:text-white rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
+                  : 'w-10 h-10 bg-gray-100 hover:bg-primary-600 text-gray-600 hover:text-white rounded-lg flex items-center justify-center transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
+              }`}
+              aria-label={`${link.isDownload ? 'Download' : 'Visit'} ${link.name} ${link.isDownload ? '' : 'profile'} (opens in new tab)`}
+            >
+              <span aria-hidden="true">
+                {link.icon}
+              </span>
+              {link.showText && (
+                <span className="font-medium">
+                  {link.isDownload ? `Download ${link.name}` : `Connect on ${link.name}`}
+                </span>
+              )}
+            </a>
+          </div>
         ))}
     </div>
   )

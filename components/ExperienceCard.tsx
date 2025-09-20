@@ -23,27 +23,30 @@ export default function ExperienceCard({ experience, isLast }: ExperienceCardPro
   }
 
   return (
-    <div className="relative flex items-start">
+    <article className="relative flex items-start" role="article">
       {/* Timeline line */}
       {!isLast && (
-        <div className="absolute left-6 top-16 w-0.5 h-full bg-gray-200"></div>
+        <div className="absolute left-6 top-16 w-0.5 h-full bg-gray-200" aria-hidden="true"></div>
       )}
       
       {/* Timeline dot */}
-      <div className="flex-shrink-0 w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mr-8 relative z-10">
+      <div className="flex-shrink-0 w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mr-8 relative z-10" aria-hidden="true">
         <div className="w-4 h-4 bg-white rounded-full"></div>
       </div>
       
       {/* Content */}
-      <div className="flex-1 card">
+      <div 
+        className="flex-1 card focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:outline-none transition-all duration-300" 
+        tabIndex={0}
+      >
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <h3 className="text-xl font-semibold text-gray-900 mb-1">
+            <h3 className="text-xl font-semibold text-gray-900 mb-1 leading-relaxed">
               {metadata?.job_title}
             </h3>
-            <h4 className="text-lg font-medium text-primary-600 mb-2">
+            <div className="text-lg font-medium text-primary-600 mb-2">
               {metadata?.company}
-            </h4>
+            </div>
             
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
               {metadata?.employment_type && (
@@ -57,7 +60,7 @@ export default function ExperienceCard({ experience, isLast }: ExperienceCardPro
               </span>
               
               {metadata?.location && (
-                <span>📍 {metadata.location}</span>
+                <span aria-label={`Location: ${metadata.location}`}>📍 {metadata.location}</span>
               )}
               
               {metadata?.current_position && (
@@ -71,10 +74,11 @@ export default function ExperienceCard({ experience, isLast }: ExperienceCardPro
           {metadata?.company_logo && (
             <img
               src={`${metadata.company_logo.imgix_url}?w=120&h=120&fit=crop&auto=format,compress`}
-              alt={`${metadata?.company} logo`}
+              alt={`${metadata?.company} company logo`}
               width="60"
               height="60"
               className="w-12 h-12 object-contain rounded-lg ml-4"
+              loading="lazy"
             />
           )}
         </div>
@@ -88,7 +92,7 @@ export default function ExperienceCard({ experience, isLast }: ExperienceCardPro
         
         {metadata?.key_achievements && (
           <div>
-            <h5 className="font-medium text-gray-900 mb-2">Key Achievements:</h5>
+            <h4 className="font-medium text-gray-900 mb-2">Key Achievements:</h4>
             <div 
               className="prose max-w-none text-gray-700"
               dangerouslySetInnerHTML={{ __html: metadata.key_achievements }}
@@ -96,6 +100,6 @@ export default function ExperienceCard({ experience, isLast }: ExperienceCardPro
           </div>
         )}
       </div>
-    </div>
+    </article>
   )
 }

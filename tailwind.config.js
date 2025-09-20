@@ -7,14 +7,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['PP Neue Montreal', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       colors: {
         primary: {
           50: '#f0f9ff',
           500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
+          600: '#6D5AFF',
+          700: '#5D4FE8',
         },
         gray: {
           50: '#f9fafb',

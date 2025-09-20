@@ -1,4 +1,4 @@
-// app/projects/[slug]/page.tsx
+// app/work/[slug]/page.tsx
 import { getProject, getProjects } from '@/lib/cosmic'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
@@ -55,8 +55,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   
   return (
     <div className="min-h-screen bg-gray-50">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <Navigation />
-      <ProjectDetail project={project} />
+      <main id="main-content" role="main">
+        <ProjectDetail project={project} />
+      </main>
     </div>
   )
 }

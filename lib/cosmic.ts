@@ -1,10 +1,10 @@
 import { createBucketClient } from '@cosmicjs/sdk'
-import { AboutMe, WorkExperience, Skill, Project } from '@/types'
+import { AboutMe, WorkExperience, Project } from '@/types'
 
 export const cosmic = createBucketClient({
-  bucketSlug: process.env.COSMIC_BUCKET_SLUG as string,
-  readKey: process.env.COSMIC_READ_KEY as string,
-  writeKey: process.env.COSMIC_WRITE_KEY as string,
+  bucketSlug: process.env.COSMIC_BUCKET_SLUG || process.env.NEXT_PUBLIC_COSMIC_BUCKET_SLUG as string,
+  readKey: process.env.COSMIC_READ_KEY || process.env.NEXT_PUBLIC_COSMIC_READ_KEY as string,
+  writeKey: process.env.COSMIC_WRITE_KEY || process.env.NEXT_PUBLIC_COSMIC_WRITE_KEY as string,
 })
 
 // Simple error helper for Cosmic SDK
@@ -12,15 +12,44 @@ function hasStatus(error: unknown): error is { status: number } {
   return typeof error === 'object' && error !== null && 'status' in error;
 }
 
-// Fetch about me information
+// Fetch about me information from contact object
 export async function getAboutMe(): Promise<AboutMe | null> {
   try {
     const response = await cosmic.objects
-      .findOne({ type: 'about-me' })
+      .findOne({ type: 'contacts', slug: 'contact-info' })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1);
     
-    return response.object as AboutMe;
+    const contactObj = response.object;
+    
+    // Transform contact object to AboutMe format
+    const aboutMe: AboutMe = {
+      id: contactObj.id,
+      slug: contactObj.slug,
+      title: 'Nicolas Ménard - About Me',
+      content: 'Experienced UX Designer and Researcher passionate about creating user-centered digital experiences.',
+      type: 'about-me',
+      created_at: contactObj.created_at,
+      modified_at: contactObj.modified_at,
+      metadata: {
+        full_name: contactObj.metadata.full_name || 'Nicolas Ménard',
+        professional_title: contactObj.metadata.professional_title || 'UX Designer & Researcher',
+        bio: contactObj.metadata.bio || 'Experienced UX Designer and Researcher passionate about creating user-centered digital experiences.',
+        years_experience: contactObj.metadata.years_experience || 8,
+        email: contactObj.metadata.email,
+        phone: contactObj.metadata.phone,
+        location: contactObj.metadata.location,
+        linkedin_url: contactObj.metadata.linkedin_url,
+        dribbble_url: contactObj.metadata.dribbble_url,
+        behance_url: contactObj.metadata.behance_url,
+        portfolio_website: contactObj.metadata.portfolio_website,
+        available_for_work: contactObj.metadata.available_for_work,
+        profile_image: contactObj.metadata.profile_image?.[0] || null, // Get first image from array
+        resume_cv: contactObj.metadata.resume_cv || contactObj.metadata.resume || null // Handle both field names
+      }
+    };
+    
+    return aboutMe;
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
       return null;
@@ -33,7 +62,7 @@ export async function getAboutMe(): Promise<AboutMe | null> {
 export async function getWorkExperience(): Promise<WorkExperience[]> {
   try {
     const response = await cosmic.objects
-      .find({ type: 'work-experience' })
+      .find({ type: 'experiences' })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1);
     
@@ -53,29 +82,13 @@ export async function getWorkExperience(): Promise<WorkExperience[]> {
   }
 }
 
-// Fetch all skills
-export async function getSkills(): Promise<Skill[]> {
-  try {
-    const response = await cosmic.objects
-      .find({ type: 'skills' })
-      .props(['id', 'title', 'slug', 'metadata'])
-      .depth(1);
-    
-    return response.objects as Skill[];
-  } catch (error) {
-    if (hasStatus(error) && error.status === 404) {
-      return [];
-    }
-    throw new Error('Failed to fetch skills');
-  }
-}
 
 // Fetch all projects
 export async function getProjects(): Promise<Project[]> {
   try {
     const response = await cosmic.objects
-      .find({ type: 'projects' })
-      .props(['id', 'title', 'slug', 'metadata'])
+      .find({ type: 'works' })
+      .props(['id', 'title', 'slug', 'content', 'metadata', 'created_at', 'modified_at'])
       .depth(1);
     
     return response.objects as Project[];
@@ -91,8 +104,8 @@ export async function getProjects(): Promise<Project[]> {
 export async function getProject(slug: string): Promise<Project | null> {
   try {
     const response = await cosmic.objects
-      .findOne({ type: 'projects', slug })
-      .props(['id', 'title', 'slug', 'metadata'])
+      .findOne({ type: 'works', slug })
+      .props(['id', 'title', 'slug', 'content', 'metadata', 'created_at', 'modified_at'])
       .depth(1);
     
     return response.object as Project;
