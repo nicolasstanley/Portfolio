@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 export const viewport = 'width=device-width, initial-scale=1'
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className="bg-gray-50 text-gray-900">
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
