@@ -12,8 +12,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const thumbnailUrl = metadata?.thumbnail
   const isVideo = thumbnailUrl && typeof thumbnailUrl === 'string' && thumbnailUrl.toLowerCase().match(/\.(mp4|webm|ogg|mov)(\?.*)?$/)
   
-  const backgroundImage = thumbnailUrl || metadata?.featured_image?.imgix_url 
-    ? `${thumbnailUrl || metadata.featured_image.imgix_url}?w=800&h=600&fit=crop&auto=format,compress`
+  const backgroundImage = thumbnailUrl || metadata?.featured_image || metadata?.cloudinary_featured_image
+    ? `${thumbnailUrl || metadata?.featured_image || metadata?.cloudinary_featured_image}?w=800&h=600&fit=crop&auto=format,compress`
     : `https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop&auto=format,compress&q=80`
 
   return (

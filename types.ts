@@ -87,7 +87,7 @@ export interface Project extends CosmicObject {
     project_type?: {
       key: string;
       value: string;
-    };
+    } | string[];
     description?: string;
     description_short?: string;
     project_overview?: string;
@@ -100,6 +100,7 @@ export interface Project extends CosmicObject {
     tools_used?: string[];
     project_duration?: string;
     client_company?: string;
+    thumbnail?: string;
     featured_image?: string;
     cloudinary_featured_image?: string;
     featured_video?: {
@@ -112,6 +113,7 @@ export interface Project extends CosmicObject {
       imgix_url: string;
     }>;
     cloudinary_gallery_images?: string;
+    // Individual numbered images
     image_1?: string;
     image_2?: string;
     image_3?: string;
@@ -122,6 +124,38 @@ export interface Project extends CosmicObject {
     image_8?: string;
     image_9?: string;
     image_10?: string;
+    image_11?: string;
+    image_12?: string;
+    image_13?: string;
+    image_14?: string;
+    image_15?: string;
+    image_16?: string;
+    image_17?: string;
+    image_18?: string;
+    image_19?: string;
+    image_20?: string;
+    // Project overview images
+    project_overview_image?: string;
+    project_overview_image_2?: string;
+    // Challenge and research images
+    challenge_and_research_image?: string;
+    challenge_and_research_image_2?: string;
+    challenge_and_research_image_3?: string;
+    // Design process images
+    design_process_image?: string;
+    design_process_image_2?: string;
+    design_process_image_3?: string;
+    // Solution images
+    solution_image?: string;
+    solution_image_2?: string;
+    solution_image_3?: string;
+    // Implementation and results images
+    implementation_and_results_image?: string;
+    implementation_and_results_image_2?: string;
+    // Reflection images
+    reflection_image?: string;
+    reflection_image_2?: string;
+    // Live URLs
     live_url?: string;
     live_url_text?: string;
     live_url_2?: string;

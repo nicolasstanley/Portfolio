@@ -16,7 +16,8 @@ export default function LiquidGlass({ className = '', children }: LiquidGlassPro
     const container = containerRef.current
     if (!canvas || !container) return
 
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
+    const gl = canvas.getContext('webgl') as WebGLRenderingContext | null || 
+               canvas.getContext('experimental-webgl') as WebGLRenderingContext | null
     if (!gl) {
       // Fallback to CSS animation
       const fallback = document.createElement('div')
@@ -130,7 +131,7 @@ export default function LiquidGlass({ className = '', children }: LiquidGlassPro
       }
     `
 
-    function createShader(gl: WebGLRenderingContext, type: number, source: string) {
+    function createShader(gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null {
       const shader = gl.createShader(type)
       if (!shader) return null
       
@@ -146,7 +147,7 @@ export default function LiquidGlass({ className = '', children }: LiquidGlassPro
       return shader
     }
 
-    function createProgram(gl: WebGLRenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader) {
+    function createProgram(gl: WebGLRenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader): WebGLProgram | null {
       const program = gl.createProgram()
       if (!program) return null
       
@@ -201,7 +202,7 @@ export default function LiquidGlass({ className = '', children }: LiquidGlassPro
     let startTime = Date.now()
 
     function resize() {
-      if (!canvas || !container) return
+      if (!canvas || !container || !gl) return
       
       const rect = container.getBoundingClientRect()
       canvas.width = rect.width * window.devicePixelRatio
@@ -214,7 +215,7 @@ export default function LiquidGlass({ className = '', children }: LiquidGlassPro
     }
 
     function render() {
-      if (!gl || !program) return
+      if (!gl || !program || !canvas) return
       
       const currentTime = (Date.now() - startTime) / 1000
       

@@ -33,12 +33,12 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     openGraph: {
       title: `${project.metadata?.project_name || project.title} - Nicolas Ménard`,
       description: project.metadata?.description || `Portfolio project: ${project.title}`,
-      images: project.metadata?.featured_image ? [
+      images: project.metadata?.featured_image || project.metadata?.cloudinary_featured_image ? [
         {
-          url: `${project.metadata.featured_image.imgix_url}?w=1200&h=630&fit=crop&auto=format,compress`,
+          url: `${project.metadata?.featured_image || project.metadata?.cloudinary_featured_image}?w=1200&h=630&fit=crop&auto=format,compress`,
           width: 1200,
           height: 630,
-          alt: project.metadata.project_name || project.title,
+          alt: project.metadata?.project_name || project.title,
         }
       ] : [],
     },
