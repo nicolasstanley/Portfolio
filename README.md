@@ -85,4 +85,11 @@ Set these environment variables in your hosting platform:
 - `COSMIC_READ_KEY` - Your Cosmic read key
 
 The portfolio is optimized for static generation and will work with any modern hosting platform that supports Next.js applications.
+
+## Latest Updates
+
+- Updated color scheme and layout improvements
+- Enhanced mobile responsiveness
+- TypeScript optimizations for deployment
+
 <!-- README_END -->
