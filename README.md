@@ -1,7 +1,37 @@
 # Nicolas Ménard - UX Designer & Researcher Portfolio
 
-This is the portfolio of Nicolas Ménard, a UX Designer & Researcher with 10 years of experience in User Experience. Built with Next.js and powered by Cosmic CMS, this portfolio showcases projects, work experience, skills, and professional information in a clean, modern interface.
+A professional portfolio website for Nicolas Ménard, a Senior UX Designer & Researcher. Built with Next.js and powered by Cosmic CMS, this portfolio showcases projects, work experience, skills, and professional information in a clean, modern interface.
 
+## Features
+
+- 🎨 **Modern Design**: Clean, professional interface with smooth animations
+- 📱 **Fully Responsive**: Optimized for desktop, tablet, and mobile devices
+- 🚀 **Fast Performance**: Built with Next.js for optimal loading speeds
+- 📊 **Dynamic Content**: All content managed through Cosmic CMS
+- 🔍 **Project Showcase**: Detailed case studies with galleries and project details
+- 💼 **Professional Timeline**: Work experience with company logos and achievements
+- 🛠️ **Skills Display**: Categorized skills with proficiency levels
+- 📞 **Contact Integration**: Professional contact information and social links
+
+## Clone this Project
+
+Want to create your own version of this project with all the content and structure? Clone this Cosmic bucket and code repository to get started instantly:
+
+[![Clone this Project](https://img.shields.io/badge/Clone%20this%20Project-29abe2?style=for-the-badge&logo=cosmic&logoColor=white)](https://app.cosmicjs.com/projects/new?clone_bucket=68acbfcc04ea77b1e31e55ea&clone_repository=68ad95471f09167261d58e02)
+
+## Prompts
+
+This application was built using the following prompts to generate the content structure and code:
+
+### Content Model Prompt
+
+> "Create a content model for a UX Designer portfolio with projects, skills, work experience, and about me page."
+
+### Code Generation Prompt
+
+> "Build a Next.js website that uses my existing objects in this bucket"
+
+The app has been tailored to work with your existing Cosmic content structure and includes all the features requested above.
 
 ## Technologies Used
 
