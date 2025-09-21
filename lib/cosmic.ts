@@ -44,7 +44,9 @@ export async function getAboutMe(): Promise<AboutMe | null> {
         behance_url: contactObj.metadata.behance_url,
         portfolio_website: contactObj.metadata.portfolio_website,
         available_for_work: contactObj.metadata.available_for_work,
-        profile_image: contactObj.metadata.profile_image?.[0] || null, // Get first image from array
+        profile_image: Array.isArray(contactObj.metadata.profile_image) 
+          ? contactObj.metadata.profile_image[0] 
+          : contactObj.metadata.profile_image || null, // Handle both array and direct value
         resume_cv: contactObj.metadata.resume_cv || contactObj.metadata.resume || null // Handle both field names
       }
     };
