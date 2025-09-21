@@ -12,7 +12,7 @@ export default function Projects({ projects }: ProjectsProps) {
       <div className="container">
         <div className="mb-16" data-aos="fade-up">
           <h2 id="work-heading" className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
-            Work
+            Projects
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl">
             Here are some of my recent design projects that showcase my approach to solving complex user experience challenges.
