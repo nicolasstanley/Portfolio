@@ -77,6 +77,16 @@ export default function Navigation() {
             >
               Contact
             </button>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
+              role="menuitem"
+              aria-label="Open Resume in new tab"
+            >
+              Resume
+            </a>
           </div>
         </div>
       </div>
