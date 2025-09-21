@@ -60,7 +60,7 @@ export default function SocialLinks({ aboutMe }: SocialLinksProps) {
   ]
 
   return (
-    <div className="flex flex-col md:flex-row md:flex-wrap items-start gap-4" role="list" aria-label="Social media links">
+    <div className="flex flex-col md:flex-row md:flex-wrap items-center md:items-start gap-4" role="list" aria-label="Social media links">
       {socialLinks
         .filter(link => link.url)
         .map((link) => (
