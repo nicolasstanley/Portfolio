@@ -30,29 +30,44 @@ export default function QuasarShader() {
       uniform vec2 u_resolution;
       uniform float u_time;
       
+      // Custom tanh implementation for WebGL compatibility
+      vec4 tanh_vec4(vec4 x) {
+        vec4 e2x = exp(2.0 * x);
+        return (e2x - 1.0) / (e2x + 1.0);
+      }
+      
       void main() {
         vec2 FC = gl_FragCoord.xy;
         vec2 r = u_resolution;
         float t = u_time * 0.5;
         vec4 o = vec4(0.0);
         
-        for(float i = 0.0, z, d, s; i < 70.0; i++) {
+        for(float i = 0.0; i < 70.0; i += 1.0) {
+          float z = 0.0;
+          float d = 1.0;
+          float s = 0.0;
+          
           vec3 p = z * normalize(vec3(FC.xy * 2.0 - r.xy, r.y));
-          vec3 a;
+          vec3 a = vec3(0.0);
           p.z += 9.0;
+          
           a = mix((a - 0.57) * dot(a - 0.57, p), p, cos(s - t)) - sin(s) * cross(a, p);
           s = sqrt(length(a.xz - a.y));
           
-          for(d = 1.0; d < 9.0; d++) {
-            a += sin(a * d - t).yzx / d;
+          for(float j = 1.0; j < 9.0; j += 1.0) {
+            a += sin(a * j - t).yzx / j;
           }
           
-          z += d = length(sin(a) + dot(a, a / a) * 0.2) * s / 20.0;
-          o += vec4(z, 2.0, s, 1.0) / s / d;
+          d = length(sin(a) + dot(a, a / max(a, vec3(0.001))) * 0.2) * s / 20.0;
+          z += d;
+          
+          if(d > 0.0) {
+            o += vec4(z, 2.0, s, 1.0) / (s + 0.001) / (d + 0.001);
+          }
         }
         
-        o = tanh(o / 2000.0);
-        gl_FragColor = o;
+        o = tanh_vec4(o / 2000.0);
+        gl_FragColor = vec4(o.rgb, 1.0);
       }
     `
 
