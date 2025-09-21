@@ -54,7 +54,7 @@ export default function Contact({ aboutMe }: ContactProps) {
               )}
             </div>
             
-            <div className="flex-1 md:order-2" data-aos="fade-up" data-aos-delay="400">
+            <div className="w-full md:flex-1 md:order-2" data-aos="fade-up" data-aos-delay="400">
               <div className="space-y-6">
                 {metadata?.email && (
                   <div className="flex items-center">
