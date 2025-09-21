@@ -60,11 +60,11 @@ export default function SocialLinks({ aboutMe }: SocialLinksProps) {
   ]
 
   return (
-    <div className="flex flex-wrap items-start gap-4" role="list" aria-label="Social media links">
+    <div className="flex flex-col md:flex-row md:flex-wrap items-start gap-4" role="list" aria-label="Social media links">
       {socialLinks
         .filter(link => link.url)
         .map((link) => (
-          <div key={link.name} role="listitem">
+          <div key={link.name} role="listitem" className={link.showText ? 'w-full md:w-auto' : ''}>
             <a
               href={link.url}
               target="_blank"
@@ -72,7 +72,7 @@ export default function SocialLinks({ aboutMe }: SocialLinksProps) {
               {...(link.isDownload && { download: true })}
               className={`${
                 link.showText 
-                  ? 'inline-flex items-center space-x-3 px-4 py-3 bg-gray-100 hover:bg-primary-600 text-gray-600 hover:text-white rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
+                  ? 'w-full md:w-auto inline-flex items-center justify-center space-x-3 px-4 py-3 bg-gray-100 hover:bg-primary-600 text-gray-600 hover:text-white rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
                   : 'w-10 h-10 bg-gray-100 hover:bg-primary-600 text-gray-600 hover:text-white rounded-lg flex items-center justify-center transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
               }`}
               aria-label={`${link.isDownload ? 'Download' : 'Visit'} ${link.name} ${link.isDownload ? '' : 'profile'} (opens in new tab)`}

@@ -114,7 +114,7 @@ export default function Contact({ aboutMe }: ContactProps) {
                 </div>
                 
                 {metadata?.available_for_work !== undefined && (
-                  <div className="pt-6">
+                  <div className="pt-6 flex justify-center md:justify-start">
                     <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${
                       metadata.available_for_work 
                         ? 'bg-green-100 text-green-800' 
