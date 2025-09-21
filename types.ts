@@ -28,7 +28,7 @@ export interface AboutMe extends CosmicObject {
     profile_image?: {
       url: string;
       imgix_url: string;
-    };
+    } | string;
     resume_cv?: {
       url: string;
       imgix_url: string;

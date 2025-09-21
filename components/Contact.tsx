@@ -44,7 +44,9 @@ export default function Contact({ aboutMe }: ContactProps) {
               {metadata?.profile_image && (
                 <div className="relative w-full md:w-80">
                   <img
-                    src={`${metadata.profile_image.imgix_url}?w=400&auto=format,compress`}
+                    src={typeof metadata.profile_image === 'string' 
+                      ? metadata.profile_image 
+                      : `${metadata.profile_image.imgix_url}?w=400&auto=format,compress`}
                     alt={metadata?.full_name || 'Contact'}
                     className="w-full h-auto object-contain rounded-lg shadow-lg"
                   />

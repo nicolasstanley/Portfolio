@@ -42,7 +42,9 @@ export default function About({ aboutMe }: AboutProps) {
             <div className="animate-slide-up">
               {metadata?.profile_image && (
                 <img
-                  src={`${metadata.profile_image.imgix_url}?w=800&h=600&fit=crop&auto=format,compress`}
+                  src={typeof metadata.profile_image === 'string' 
+                    ? metadata.profile_image 
+                    : `${metadata.profile_image.imgix_url}?w=800&h=600&fit=crop&auto=format,compress`}
                   alt={metadata?.full_name || 'About me'}
                   width="400"
                   height="300"
