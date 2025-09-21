@@ -19,7 +19,7 @@ export default function SocialLinks({ aboutMe }: SocialLinksProps) {
       )
     },
     {
-      name: 'Resume/CV',
+      name: 'Resume',
       url: metadata?.resume_cv?.url || metadata?.resume_cv?.imgix_url,
       showText: true,
       isDownload: true,
