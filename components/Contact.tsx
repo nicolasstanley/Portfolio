@@ -109,7 +109,7 @@ export default function Contact({ aboutMe }: ContactProps) {
                   </div>
                 )}
                 
-                <div className="pt-6 border-t border-gray-200">
+                <div className="pt-6 border-t border-gray-200 flex justify-center md:justify-start">
                   <SocialLinks aboutMe={aboutMe} />
                 </div>
                 
