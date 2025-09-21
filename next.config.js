@@ -38,22 +38,6 @@ const nextConfig = {
   },
   // Ensure static generation works properly
   output: 'standalone',
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.nicolasmenard.design',
-          },
-        ],
-        destination: 'https://nicolasmenard.design/:path*',
-        permanent: true,
-        statusCode: 301,
-      },
-    ]
-  },
 }
 
 module.exports = nextConfig
