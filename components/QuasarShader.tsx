@@ -5,6 +5,11 @@ import { useEffect, useRef } from 'react'
 export default function QuasarShader() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number>()
+  const mouseRef = useRef({ x: 0.5, y: 0.5, moved: false })
+  const startTimeRef = useRef(Date.now())
+  const clickedTimeRef = useRef(0)
+  const massRef = useRef(0)
+  const targetMassRef = useRef(1500)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -19,65 +24,88 @@ export default function QuasarShader() {
     // Vertex shader source
     const vertexShaderSource = `
       attribute vec2 a_position;
+      attribute vec2 a_texCoord;
+      varying vec2 v_texCoord;
+      
       void main() {
         gl_Position = vec4(a_position, 0.0, 1.0);
+        v_texCoord = a_texCoord;
       }
     `
 
-    // Fragment shader source - "Quasar 2" shader
+    // Fragment shader source - Black hole effect
     const fragmentShaderSource = `
+      #ifdef GL_ES
       precision mediump float;
+      #endif
+
+      #define PI 3.14159265359
+
+      varying vec2 v_texCoord;
       uniform vec2 u_resolution;
+      uniform vec2 u_mouse;
+      uniform float u_mass;
       uniform float u_time;
-      
-      // Custom tanh implementation for WebGL compatibility
-      vec4 tanh_vec4(vec4 x) {
-        return (exp(2.0 * x) - 1.0) / (exp(2.0 * x) + 1.0);
-      }
-      
-      void main() {
-        vec2 FC = gl_FragCoord.xy;
-        vec2 r = u_resolution;
-        float t = u_time * 0.8;
-        vec4 o = vec4(0.0);
+      uniform float u_clickedTime;
+
+      // Generate a procedural starfield background
+      vec3 generateBackground(vec2 st) {
+        vec3 color = vec3(0.0);
         
-        float z = 0.0;
-        float d = 1.0;
-        float s = 0.0;
+        // Create starfield
+        vec2 starPos = st * 50.0;
+        float star = 0.0;
         
-        for(float i = 0.0; i < 70.0; i += 1.0) {
-          vec3 p = z * normalize(vec3(FC.xy * 2.0 - r.xy, r.y));
-          vec3 a = vec3(0.0);
-          p.z += 9.0;
-          
-          // Initialize a properly
-          a = p;
-          a = mix(dot(a - 0.57, p) * (a - 0.57), p, cos(s - t)) - sin(s) * cross(a, p);
-          s = sqrt(length(a.xz) - a.y);
-          
-          // Inner loop for fractal-like iteration
-          for(float j = 1.0; j < 9.0; j += 1.0) {
-            a += sin(a * j - t).yzx / j;
-          }
-          
-          // Calculate distance and update z
-          vec3 safe_a = a + vec3(0.001); // Prevent division by zero
-          d = length(sin(a) + dot(a, a / safe_a) * 0.2) * abs(s) / 20.0;
-          z += d;
-          
-          // Accumulate color
-          float safe_s = abs(s) + 0.001;
-          float safe_d = d + 0.001;
-          o += vec4(z, 2.0, safe_s, 1.0) / safe_s / safe_d;
+        for(int i = 0; i < 20; i++) {
+          vec2 offset = vec2(sin(float(i) * 43.0), cos(float(i) * 37.0)) * 25.0;
+          vec2 starCoord = starPos + offset;
+          float starDist = length(fract(starCoord) - 0.5);
+          star += 0.01 / starDist;
         }
         
-        // Apply tanh for tone mapping
-        o = tanh_vec4(o / 2000.0);
+        // Nebula-like background
+        vec2 nebula = st * 3.0 + u_time * 0.1;
+        float n1 = sin(nebula.x * 2.0) * sin(nebula.y * 1.5);
+        float n2 = sin(nebula.x * 3.0 + u_time * 0.2) * sin(nebula.y * 2.0 + u_time * 0.15);
         
-        // Enhance colors and add some vibrance
-        o.rgb = mix(o.rgb, o.rgb * vec3(1.5, 1.2, 2.0), 0.6);
+        color += vec3(0.1, 0.05, 0.2) * (n1 + n2) * 0.5;
+        color += vec3(0.05, 0.1, 0.3) * star;
+        color += vec3(0.02, 0.01, 0.05); // Base space color
         
-        gl_FragColor = vec4(o.rgb, 1.0);
+        return color;
+      }
+
+      vec2 rotate(vec2 mt, vec2 st, float angle) {
+        float cos_a = cos((angle + u_clickedTime) * PI);
+        float sin_a = sin(angle * 0.0);
+        
+        float nx = (cos_a * (st.x - mt.x)) + (sin_a * (st.y - mt.y)) + mt.x;
+        float ny = (cos_a * (st.y - mt.y)) - (sin_a * (st.x - mt.x)) + mt.y;
+        return vec2(nx, ny);
+      }
+
+      void main() {
+        vec2 st = vec2(gl_FragCoord.x, u_resolution.y - gl_FragCoord.y) / u_resolution;
+        vec2 mt = vec2(u_mouse.x, u_resolution.y - u_mouse.y) / u_resolution;
+
+        float dx = st.x - mt.x;
+        float dy = st.y - mt.y;
+
+        float dist = sqrt(dx * dx + dy * dy);
+        float pull = u_mass / (dist * dist);
+        
+        vec3 color = vec3(0.0);
+        
+        vec2 r = rotate(mt, st, pull);
+        vec3 bgColor = generateBackground(r);
+        
+        color = vec3(
+          (bgColor.x - (pull * 0.25)),
+          (bgColor.y - (pull * 0.25)), 
+          (bgColor.z - (pull * 0.25))
+        );
+
+        gl_FragColor = vec4(color, 1.0);
       }
     `
 
@@ -128,14 +156,16 @@ export default function QuasarShader() {
 
     // Get attribute and uniform locations
     const positionAttributeLocation = gl.getAttribLocation(program, 'a_position')
+    const texCoordAttributeLocation = gl.getAttribLocation(program, 'a_texCoord')
     const resolutionUniformLocation = gl.getUniformLocation(program, 'u_resolution')
+    const mouseUniformLocation = gl.getUniformLocation(program, 'u_mouse')
+    const massUniformLocation = gl.getUniformLocation(program, 'u_mass')
     const timeUniformLocation = gl.getUniformLocation(program, 'u_time')
+    const clickedTimeUniformLocation = gl.getUniformLocation(program, 'u_clickedTime')
 
-    // Create buffer
+    // Create position buffer
     const positionBuffer = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
-
-    // Put a full screen quad in the buffer
     const positions = [
       -1, -1,
        1, -1,
@@ -145,6 +175,41 @@ export default function QuasarShader() {
        1,  1,
     ]
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
+
+    // Create texture coordinate buffer
+    const texCoordBuffer = gl.createBuffer()
+    gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer)
+    const texCoords = [
+      -1, -1,
+       1, -1,
+      -1,  1,
+      -1,  1,
+       1, -1,
+       1,  1,
+    ]
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(texCoords), gl.STATIC_DRAW)
+
+    // Mouse handling
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect()
+      mouseRef.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+        moved: true
+      }
+    }
+
+    const handleMouseDown = () => {
+      clickedTimeRef.current += 0.03
+    }
+
+    const handleMouseUp = () => {
+      // Mouse up handled in render loop
+    }
+
+    canvas.addEventListener('mousemove', handleMouseMove)
+    canvas.addEventListener('mousedown', handleMouseDown)
+    canvas.addEventListener('mouseup', handleMouseUp)
 
     // Resize canvas
     function resizeCanvas() {
@@ -158,22 +223,48 @@ export default function QuasarShader() {
     window.addEventListener('resize', resizeCanvas)
 
     // Render function
-    function render(time: number) {
+    function render() {
       if (!canvas) return
       
-      time *= 0.001 // Convert to seconds
+      const currentTime = (Date.now() - startTimeRef.current) / 1000
+
+      // Update mass with easing
+      if (massRef.current < targetMassRef.current - 50) {
+        massRef.current += (targetMassRef.current - massRef.current) * 0.03
+      }
+
+      // Auto-move mouse if not moved by user
+      if (!mouseRef.current.moved) {
+        mouseRef.current.y = (canvas.height / 2) + Math.sin(currentTime * 0.7) * (canvas.height * 0.25)
+        mouseRef.current.x = (canvas.width / 2) + Math.sin(currentTime * 0.6) * -(canvas.width * 0.35)
+      }
+
+      // Gradually reduce clicked time
+      if (clickedTimeRef.current > 0) {
+        clickedTimeRef.current -= clickedTimeRef.current * 0.015
+      }
 
       gl.clearColor(0, 0, 0, 1)
       gl.clear(gl.COLOR_BUFFER_BIT)
 
       gl.useProgram(program)
 
-      gl.enableVertexAttribArray(positionAttributeLocation)
+      // Setup position attributes
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
+      gl.enableVertexAttribArray(positionAttributeLocation)
       gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0)
 
+      // Setup texture coordinate attributes
+      gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer)
+      gl.enableVertexAttribArray(texCoordAttributeLocation)
+      gl.vertexAttribPointer(texCoordAttributeLocation, 2, gl.FLOAT, false, 0, 0)
+
+      // Set uniforms
       gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height)
-      gl.uniform1f(timeUniformLocation, time)
+      gl.uniform2f(mouseUniformLocation, mouseRef.current.x, mouseRef.current.y)
+      gl.uniform1f(massUniformLocation, massRef.current * 0.00001)
+      gl.uniform1f(timeUniformLocation, currentTime)
+      gl.uniform1f(clickedTimeUniformLocation, clickedTimeRef.current)
 
       gl.drawArrays(gl.TRIANGLES, 0, 6)
 
@@ -189,6 +280,9 @@ export default function QuasarShader() {
         cancelAnimationFrame(animationRef.current)
       }
       window.removeEventListener('resize', resizeCanvas)
+      canvas.removeEventListener('mousemove', handleMouseMove)
+      canvas.removeEventListener('mousedown', handleMouseDown)
+      canvas.removeEventListener('mouseup', handleMouseUp)
     }
   }, [])
 
