@@ -18,7 +18,7 @@ export default function Experience({ experiences }: ExperienceProps) {
             Experience
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl">
-            My professional journey in UX design, from junior roles to senior positions in leading companies.
+            My professional journey in UX design, from junior roles to senior positions.
           </p>
         </div>
         
