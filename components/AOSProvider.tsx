@@ -1,25 +1,29 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 export default function AOSProvider({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = useState(false)
-
   useEffect(() => {
-    setMounted(true)
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 50,
-    })
+    const initAOS = async () => {
+      // Dynamically import both AOS and its CSS
+      const [{ default: AOS }] = await Promise.all([
+        import('aos'),
+        import('aos/dist/aos.css')
+      ])
+      
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 50,
+      })
+    }
+    
+    // Only initialize on client side
+    if (typeof window !== 'undefined') {
+      initAOS()
+    }
   }, [])
-
-  if (!mounted) {
-    return <>{children}</>
-  }
 
   return <>{children}</>
 }

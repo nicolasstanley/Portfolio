@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
-import AOSProvider from '@/components/AOSProvider'
+import dynamic from 'next/dynamic'
 import './globals.css'
+
+const AOSProvider = dynamic(() => import('@/components/AOSProvider'), {
+  ssr: false
+})
 
 export const viewport = 'width=device-width, initial-scale=1'
 
