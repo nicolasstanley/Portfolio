@@ -30,7 +30,7 @@ export default function Contact({ aboutMe }: ContactProps) {
   return (
     <section id="contact" className="section bg-white">
       <div className="container">
-        <div className="mb-16">
+        <div className="mb-16" data-aos="fade-up">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
             Get In Touch
           </h2>
@@ -40,7 +40,7 @@ export default function Contact({ aboutMe }: ContactProps) {
         </div>
           
           <div className="flex flex-col md:flex-row gap-12 items-start">
-            <div className="animate-slide-up md:order-1">
+            <div className="md:order-1" data-aos="fade-up" data-aos-delay="200">
               {metadata?.profile_image && (
                 <div className="relative w-full md:w-80">
                   <img
@@ -52,7 +52,7 @@ export default function Contact({ aboutMe }: ContactProps) {
               )}
             </div>
             
-            <div className="animate-slide-up flex-1 md:order-2">
+            <div className="flex-1 md:order-2" data-aos="fade-up" data-aos-delay="400">
               <div className="space-y-6">
                 {metadata?.email && (
                   <div className="flex items-center">

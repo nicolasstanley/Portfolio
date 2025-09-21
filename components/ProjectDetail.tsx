@@ -72,7 +72,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       `}</style>
       <div className="container">
         {/* Back button */}
-        <nav className="mb-8" aria-label="Breadcrumb">
+        <nav className="mb-8" aria-label="Breadcrumb" data-aos="fade-up">
           <Link
             href="/"
             className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
@@ -85,7 +85,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         
         <div>
           {/* Project header */}
-          <div className="mb-12">
+          <div className="mb-12" data-aos="fade-up" data-aos-delay="200">
             <h1 className="font-bold text-gray-900 leading-tight" style={{ fontSize: '2rem', marginTop: '0', marginBottom: '1.6rem' }}>
               {metadata?.project_name || project.title}
             </h1>
@@ -103,7 +103,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       
       {/* Full width featured image */}
       {(metadata?.featured_image || metadata?.cloudinary_featured_image) && (
-        <div style={{ marginTop: '2em', marginBottom: '3em' }}>
+        <div style={{ marginTop: '2em', marginBottom: '3em' }} data-aos="fade-up" data-aos-delay="400">
           <img
             src={metadata.featured_image || metadata.cloudinary_featured_image}
             alt={`Featured image for ${metadata?.project_name || project.title} project`}
@@ -118,7 +118,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       
       <div className="container">
         {/* Project details */}
-        <div className="grid md:grid-cols-3 gap-12 mb-12 items-start">
+        <div className="grid md:grid-cols-3 gap-12 mb-12 items-start" data-aos="fade-up" data-aos-delay="600">
           <div className="md:col-span-2" style={{ display: 'flex', flexDirection: 'column', gap: '6rem' }}>
             {metadata?.description && (
               <div 
@@ -129,7 +129,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             )}
             
             {metadata?.project_overview && (
-              <div>
+              <div data-aos="fade-up" data-aos-delay="800">
                 {(metadata?.project_overview_image || metadata?.project_overview_image_2) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.project_overview_image && (
@@ -178,7 +178,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             )}
             
             {metadata?.challenge_and_research && (
-              <div>
+              <div data-aos="fade-up" data-aos-delay="1000">
                 {(metadata?.challenge_and_research_image || metadata?.challenge_and_research_image_2 || metadata?.challenge_and_research_image_3) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.challenge_and_research_image && (
@@ -243,7 +243,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             )}
             
             {metadata?.design_process && (
-              <div>
+              <div data-aos="fade-up" data-aos-delay="1200">
                 {(metadata?.design_process_image || metadata?.design_process_image_2 || metadata?.design_process_image_3) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.design_process_image && (
@@ -308,7 +308,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             )}
             
             {metadata?.solution && (
-              <div>
+              <div data-aos="fade-up" data-aos-delay="1400">
                 {(metadata?.solution_image || metadata?.solution_image_2 || metadata?.solution_image_3) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.solution_image && (
@@ -373,7 +373,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             )}
             
             {metadata?.implementation_and_results && (
-              <div>
+              <div data-aos="fade-up" data-aos-delay="1600">
                 {(metadata?.implementation_and_results_image || metadata?.implementation_and_results_image_2) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.implementation_and_results_image && (
@@ -422,7 +422,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             )}
             
             {metadata?.reflection && (
-              <div>
+              <div data-aos="fade-up" data-aos-delay="1800">
                 {(metadata?.reflection_image || metadata?.reflection_image_2) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.reflection_image && (
@@ -472,7 +472,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             
             {/* Fallback sections for backwards compatibility */}
             {metadata?.challenge && !metadata?.challenge_and_research && (
-              <div>
+              <div data-aos="fade-up" data-aos-delay="2000">
                 <p className="text-gray-700 text-base" style={{ lineHeight: '1.6' }}>
                   {metadata.challenge}
                 </p>
@@ -480,7 +480,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             )}
             
             {metadata?.solution && !metadata?.implementation_and_results && (
-              <div>
+              <div data-aos="fade-up" data-aos-delay="2200">
                 {metadata?.solution_image && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     <button

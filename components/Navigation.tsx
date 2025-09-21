@@ -43,7 +43,7 @@ export default function Navigation() {
     }`} role="banner">
       <nav role="navigation" aria-label="Main navigation">
       <div className="container">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16" data-aos="fade-down" data-aos-duration="800">
           <Link 
             href="/"
             className="font-medium text-lg text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"

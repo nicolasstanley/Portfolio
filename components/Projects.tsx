@@ -10,7 +10,7 @@ export default function Projects({ projects }: ProjectsProps) {
   return (
     <section id="work" className="section bg-gray-50" aria-labelledby="work-heading">
       <div className="container">
-        <div className="mb-16">
+        <div className="mb-16" data-aos="fade-up">
           <h2 id="work-heading" className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
             Work
           </h2>
@@ -21,8 +21,8 @@ export default function Projects({ projects }: ProjectsProps) {
         
         <div className="grid md:grid-cols-2 gap-8" role="list" aria-label="Portfolio projects">
           {projects && projects.length > 0 ? (
-            projects.map((project) => (
-              <div key={project.id} role="listitem">
+            projects.map((project, index) => (
+              <div key={project.id} role="listitem" data-aos="fade-up" data-aos-delay={index * 200}>
                 <ProjectCard project={project} />
               </div>
             ))
