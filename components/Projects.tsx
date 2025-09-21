@@ -22,7 +22,7 @@ export default function Projects({ projects }: ProjectsProps) {
         <div className="grid md:grid-cols-2 gap-8" role="list" aria-label="Portfolio projects">
           {projects && projects.length > 0 ? (
             projects.map((project, index) => (
-              <div key={project.id} role="listitem" data-aos="fade-up" data-aos-delay={index * 200}>
+              <div key={project.id} role="listitem" data-aos="fade-up" data-aos-delay="200">
                 <ProjectCard project={project} />
               </div>
             ))
