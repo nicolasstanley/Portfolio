@@ -32,41 +32,51 @@ export default function QuasarShader() {
       
       // Custom tanh implementation for WebGL compatibility
       vec4 tanh_vec4(vec4 x) {
-        vec4 e2x = exp(2.0 * x);
-        return (e2x - 1.0) / (e2x + 1.0);
+        return (exp(2.0 * x) - 1.0) / (exp(2.0 * x) + 1.0);
       }
       
       void main() {
         vec2 FC = gl_FragCoord.xy;
         vec2 r = u_resolution;
-        float t = u_time * 0.5;
+        float t = u_time * 0.8;
         vec4 o = vec4(0.0);
         
+        float z = 0.0;
+        float d = 1.0;
+        float s = 0.0;
+        
         for(float i = 0.0; i < 70.0; i += 1.0) {
-          float z = 0.0;
-          float d = 1.0;
-          float s = 0.0;
-          
           vec3 p = z * normalize(vec3(FC.xy * 2.0 - r.xy, r.y));
           vec3 a = vec3(0.0);
           p.z += 9.0;
           
-          a = mix((a - 0.57) * dot(a - 0.57, p), p, cos(s - t)) - sin(s) * cross(a, p);
-          s = sqrt(length(a.xz - a.y));
+          // Initialize a properly
+          a = p;
+          a = mix(dot(a - 0.57, p) * (a - 0.57), p, cos(s - t)) - sin(s) * cross(a, p);
+          s = sqrt(length(a.xz) - a.y);
           
+          // Inner loop for fractal-like iteration
           for(float j = 1.0; j < 9.0; j += 1.0) {
             a += sin(a * j - t).yzx / j;
           }
           
-          d = length(sin(a) + dot(a, a / max(a, vec3(0.001))) * 0.2) * s / 20.0;
+          // Calculate distance and update z
+          vec3 safe_a = a + vec3(0.001); // Prevent division by zero
+          d = length(sin(a) + dot(a, a / safe_a) * 0.2) * abs(s) / 20.0;
           z += d;
           
-          if(d > 0.0) {
-            o += vec4(z, 2.0, s, 1.0) / (s + 0.001) / (d + 0.001);
-          }
+          // Accumulate color
+          float safe_s = abs(s) + 0.001;
+          float safe_d = d + 0.001;
+          o += vec4(z, 2.0, safe_s, 1.0) / safe_s / safe_d;
         }
         
+        // Apply tanh for tone mapping
         o = tanh_vec4(o / 2000.0);
+        
+        // Enhance colors and add some vibrance
+        o.rgb = mix(o.rgb, o.rgb * vec3(1.5, 1.2, 2.0), 0.6);
+        
         gl_FragColor = vec4(o.rgb, 1.0);
       }
     `
