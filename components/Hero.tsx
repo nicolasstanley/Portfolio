@@ -112,10 +112,10 @@ export default function Hero({ aboutMe }: HeroProps) {
       <div className="container relative z-10 pointer-events-none transform -translate-y-6">
         <div data-aos="fade-up" data-aos-duration="1000">
           <h1 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-normal leading-relaxed">
-            Hi, I'm Nicolas, a UX Designer & Researcher
+            Hi, I'm Nicolas 👋
           </h1>
           <p className="text-lg text-gray-500 max-w-2xl leading-6">
-            I design delightful, accessible experiences that solve real problems. Specializing in user research, prototyping, and end-to-end design for web and mobile.
+            A results-driven UX Designer with experience in leading teams and creating user-centered mobile and web experiences across multiple countries.
           </p>
         </div>
       </div>

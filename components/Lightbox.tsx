@@ -128,6 +128,7 @@ export default function Lightbox({
         <img
           src={currentImage}
           alt={`${projectTitle || 'Project'} screenshot ${currentIndex + 1} of ${images.length}`}
+          loading="lazy"
           className={`max-w-full max-h-[90vh] object-contain transition-opacity duration-300 ${
             imageLoaded ? 'opacity-100' : 'opacity-0'
           }`}
@@ -157,6 +158,7 @@ export default function Lightbox({
               <img
                 src={image}
                 alt={`Thumbnail ${index + 1}`}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </button>

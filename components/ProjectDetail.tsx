@@ -71,17 +71,6 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         }
       `}</style>
       <div className="container">
-        {/* Back button */}
-        <nav className="mb-8" aria-label="Breadcrumb" data-aos="fade-up">
-          <Link
-            href="/"
-            className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
-            aria-label="Go back to portfolio home page"
-            tabIndex={0}
-          >
-            ← Back
-          </Link>
-        </nav>
         
         <div>
           {/* Project header */}
@@ -143,7 +132,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Overview image for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -159,7 +148,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Overview image 2 for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -192,7 +181,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Challenge & Research image for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -208,7 +197,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Challenge & Research image 2 for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -224,7 +213,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Challenge & Research image 3 for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -257,7 +246,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Design Process image for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -273,7 +262,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Design Process image 2 for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -289,7 +278,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Design Process image 3 for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -322,7 +311,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Solution image for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -338,7 +327,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Solution image 2 for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -354,7 +343,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Solution image 3 for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -387,7 +376,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Implementation & Results image for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -403,7 +392,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Implementation & Results image 2 for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -436,7 +425,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Reflection image for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -452,7 +441,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Reflection image 2 for ${metadata?.project_name || project.title}`}
                           width="800"
                           height="400"
-                          className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                          className="w-full object-cover rounded-lg  cursor-pointer"
                           loading="lazy"
                         />
                       </button>
@@ -493,7 +482,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         alt={`Solution image for ${metadata?.project_name || project.title}`}
                         width="800"
                         height="400"
-                        className="w-full object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                        className="w-full object-cover rounded-lg  cursor-pointer"
                         loading="lazy"
                       />
                     </button>
@@ -696,7 +685,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           <div className="w-full">
                             <video
                               src={imageUrl}
-                              className="w-full h-auto object-cover rounded-lg shadow-sm"
+                              className="w-full h-auto object-cover rounded-lg "
                               autoPlay
                               loop
                               muted
@@ -715,7 +704,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                             <img
                               src={imageUrl}
                               alt={`${metadata?.project_name || project.title} project screenshot ${index + 1}`}
-                              className="w-full h-auto object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                              className="w-full h-auto object-cover rounded-lg  cursor-pointer"
                               loading="lazy"
                             />
                           </button>
@@ -739,7 +728,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                             alt={`${metadata?.project_name || project.title} project screenshot ${index + 1}`}
                             width="400"
                             height="250"
-                            className="w-full h-64 object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                            className="w-full h-64 object-cover rounded-lg  cursor-pointer"
                             loading="lazy"
                           />
                         </button>
@@ -762,7 +751,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                             alt={`${metadata?.project_name || project.title} project screenshot ${index + 1}`}
                             width="400"
                             height="250"
-                            className="w-full h-64 object-cover rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+                            className="w-full h-64 object-cover rounded-lg  cursor-pointer"
                             loading="lazy"
                           />
                         </button>

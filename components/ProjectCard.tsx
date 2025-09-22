@@ -32,6 +32,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               muted
               loop
               playsInline
+              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover"
               aria-label={`Background video for ${metadata?.project_name || project.title} project`}
             >
@@ -41,17 +42,19 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-black/60" aria-hidden="true"></div>
           </>
         ) : (
-          <div 
-            className="absolute inset-0 w-full h-full"
+          <img
+            src={backgroundImage}
+            alt={`${metadata?.project_name || project.title} project preview`}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
             style={{
-              backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url(${backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              filter: 'brightness(0.7)',
             }}
-            role="img"
-            aria-label={`Background image for ${metadata?.project_name || project.title} project`}
-          ></div>
+          />
         )}
+        
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-black/60" aria-hidden="true"></div>
         
         {/* Hover overlay - behind content */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" aria-hidden="true"></div>

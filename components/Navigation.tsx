@@ -6,17 +6,36 @@ import { useRouter, usePathname } from 'next/navigation'
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const router = useRouter()
   const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      const currentScrollY = window.scrollY
+      
+      // Update scroll state
+      setIsScrolled(currentScrollY > 0)
+      
+      // Show/hide logic
+      if (currentScrollY === 0) {
+        // At the top - always show
+        setIsVisible(true)
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show nav
+        setIsVisible(true)
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past threshold - hide nav
+        setIsVisible(false)
+      }
+      
+      setLastScrollY(currentScrollY)
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   const handleNavigation = (sectionId: string) => {
     // Check if we're on the homepage
@@ -39,18 +58,40 @@ export default function Navigation() {
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/20 backdrop-blur-md shadow-md border-b border-gray-200/20' : 'bg-transparent'
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    } ${
+      isScrolled ? 'bg-white/20 backdrop-blur-md border-b border-gray-200/20' : 'bg-white/10 backdrop-blur-sm'
     }`} role="banner">
       <nav role="navigation" aria-label="Main navigation">
       <div className="container">
-        <div className="flex items-center justify-between h-16" data-aos="fade-down" data-aos-duration="800">
-          <Link 
-            href="/"
-            className="font-medium text-lg text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
-            aria-label="Navigate to home page"
-          >
-            Nicolas Ménard
-          </Link>
+        <div className="flex items-center justify-between h-16" data-aos="fade-down" data-aos-duration="400">
+          {pathname === '/' ? (
+            <Link 
+              href="/"
+              className="font-medium text-lg text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
+              aria-label="Navigate to home page"
+            >
+              Nicolas Ménard
+            </Link>
+          ) : (
+            isScrolled ? (
+              <Link
+                href="/"
+                className="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-600 rounded-full px-4 py-2"
+                aria-label="Go back to portfolio home page"
+              >
+                ← Back
+              </Link>
+            ) : (
+              <Link 
+                href="/"
+                className="font-medium text-lg text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
+                aria-label="Navigate to home page"
+              >
+                Nicolas Ménard
+              </Link>
+            )
+          )}
           
           <div className="hidden md:flex space-x-8 font-medium" role="menubar" aria-label="Main menu">
             <button
