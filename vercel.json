@@ -6,5 +6,12 @@
     "app/**/*.ts": {
       "includeFiles": "**"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "https://www.nicolasmenard.design/:path*",
+      "destination": "https://nicolasmenard.design/:path*",
+      "permanent": true
+    }
+  ]
 }
