@@ -115,7 +115,7 @@ export default function Hero({ aboutMe }: HeroProps) {
             Hi, I'm Nicolas 👋
           </h1>
           <p className="text-lg text-gray-500 max-w-2xl leading-6">
-            A results-driven UX Designer with experience in leading teams and creating user-centered mobile and web experiences across multiple countries.
+            Results-driven UX Designer with experience leading teams and building user-centered products.
           </p>
         </div>
       </div>
