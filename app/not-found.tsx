@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import QuasarShader from '@/components/QuasarShader'
+import HalftoneBackground from '@/components/HalftoneBackground'
 
 export default function NotFound() {
   return (
     <main className="min-h-screen relative flex items-center justify-center px-4 overflow-hidden" role="main" aria-labelledby="not-found-heading">
-      <QuasarShader />
+      <HalftoneBackground />
       <div className="text-center relative z-10">
         <div className="text-9xl font-bold text-white/20 mb-4" aria-hidden="true">404</div>
         <h1 id="not-found-heading" className="text-2xl md:text-3xl font-semibold text-white mb-4">

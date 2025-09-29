@@ -32,7 +32,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               muted
               loop
               playsInline
-              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover"
               aria-label={`Background video for ${metadata?.project_name || project.title} project`}
             >
