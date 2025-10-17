@@ -86,7 +86,7 @@ function FluidFallback() {
 
 export default function Hero({ aboutMe }: HeroProps) {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16" role="banner" aria-label="Hero section introducing Nicolas Ménard">
+    <section className="h-[38.2vh] flex items-center justify-center relative overflow-hidden pt-16" role="banner" aria-label="Hero section introducing Nicolas Ménard">
       {/* Three.js Canvas with Fluid Background */}
       <div className="absolute inset-0 w-full h-full z-0" role="presentation" aria-hidden="true">
         <Canvas
@@ -115,7 +115,7 @@ export default function Hero({ aboutMe }: HeroProps) {
             Hi, I'm Nicolas 👋
           </h1>
           <p className="text-lg text-gray-500 max-w-2xl leading-6">
-            A results-driven UX Designer with experience leading teams and building user-centered products.
+            A results-driven UX Designer with experience leading teams and conducting user research.
           </p>
         </div>
       </div>
