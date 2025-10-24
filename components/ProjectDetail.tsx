@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
@@ -90,17 +91,18 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
       </div>
       
-      {/* Full width featured image */}
-      {(metadata?.featured_image || metadata?.cloudinary_featured_image) && (
+      {/* Full width hero image */}
+      {(metadata?.hero_image || metadata?.cloudinary_hero_image) && (
         <div style={{ marginTop: '2em', marginBottom: '3em' }} data-aos="fade-up" data-aos-delay="400">
-          <img
-            src={metadata.featured_image || metadata.cloudinary_featured_image}
-            alt={`Featured image for ${metadata?.project_name || project.title} project`}
-            width="800"
-            height="400"
+          <Image
+            src={metadata.hero_image || metadata.cloudinary_hero_image}
+            alt={`Hero image for ${metadata?.project_name || project.title} project`}
+            width={1600}
+            height={928}
             className="w-full object-cover"
             style={{ height: '464px' }}
-            loading="lazy"
+            priority
+            unoptimized
           />
         </div>
       )}
@@ -127,13 +129,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View overview image for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.project_overview_image}
                           alt={`Overview image for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
-                          className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          width={1600}
+                          height={800}
+                          className="w-full object-cover rounded-lg cursor-pointer"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -143,13 +145,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                         aria-label={`View overview image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.project_overview_image_2}
                           alt={`Overview image 2 for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
-                          className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          width={1600}
+                          height={800}
+                          className="w-full object-cover rounded-lg cursor-pointer"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -176,13 +178,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View challenge & research image for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.challenge_and_research_image}
                           alt={`Challenge & Research image for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
-                          className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          width={1600}
+                          height={800}
+                          className="w-full object-cover rounded-lg cursor-pointer"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -192,13 +194,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View challenge & research image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.challenge_and_research_image_2}
                           alt={`Challenge & Research image 2 for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
-                          className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          width={1600}
+                          height={800}
+                          className="w-full object-cover rounded-lg cursor-pointer"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -208,13 +210,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                         aria-label={`View challenge & research image 3 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.challenge_and_research_image_3}
                           alt={`Challenge & Research image 3 for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
-                          className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          width={1600}
+                          height={800}
+                          className="w-full object-cover rounded-lg cursor-pointer"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -241,13 +243,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View design process image for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.design_process_image}
                           alt={`Design Process image for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -257,13 +259,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View design process image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.design_process_image_2}
                           alt={`Design Process image 2 for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -273,13 +275,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                         aria-label={`View design process image 3 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.design_process_image_3}
                           alt={`Design Process image 3 for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -306,13 +308,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View solution image for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.solution_image}
                           alt={`Solution image for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -322,13 +324,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View solution image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.solution_image_2}
                           alt={`Solution image 2 for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -338,13 +340,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                         aria-label={`View solution image 3 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.solution_image_3}
                           alt={`Solution image 3 for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -371,13 +373,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View implementation & results image for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.implementation_and_results_image}
                           alt={`Implementation & Results image for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -387,13 +389,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                         aria-label={`View implementation & results image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.implementation_and_results_image_2}
                           alt={`Implementation & Results image 2 for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -420,13 +422,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View reflection image for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.reflection_image}
                           alt={`Reflection image for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -436,13 +438,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                         aria-label={`View reflection image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <img
+                        <Image
                           src={metadata.reflection_image_2}
                           alt={`Reflection image 2 for ${metadata?.project_name || project.title}`}
-                          width="800"
-                          height="400"
+                          width={1600}
+                          height={800}
                           className="w-full object-cover rounded-lg  cursor-pointer"
-                          loading="lazy"
+                          unoptimized
                         />
                       </button>
                     )}
@@ -477,13 +479,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                       className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                       aria-label={`View solution image for ${metadata?.project_name || project.title} in lightbox`}
                     >
-                      <img
+                      <Image
                         src={metadata.solution_image}
                         alt={`Solution image for ${metadata?.project_name || project.title}`}
-                        width="800"
-                        height="400"
+                        width={1600}
+                        height={800}
                         className="w-full object-cover rounded-lg  cursor-pointer"
-                        loading="lazy"
+                        unoptimized
                       />
                     </button>
                   </div>
@@ -624,9 +626,9 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           // Collect images that are already shown in content sections above to exclude them from gallery
           const contentSectionImages: string[] = [];
           if (metadata) {
-            // Featured image
-            if (metadata.featured_image) contentSectionImages.push(metadata.featured_image);
-            if (metadata.cloudinary_featured_image) contentSectionImages.push(metadata.cloudinary_featured_image);
+            // Hero image
+            if (metadata.hero_image) contentSectionImages.push(metadata.hero_image);
+            if (metadata.cloudinary_hero_image) contentSectionImages.push(metadata.cloudinary_hero_image);
             
             // Project overview images
             if (metadata.project_overview_image) contentSectionImages.push(metadata.project_overview_image);
@@ -701,11 +703,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                             className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                             aria-label={`View ${metadata?.project_name || project.title} screenshot ${index + 1} in lightbox`}
                           >
-                            <img
+                            <Image
                               src={imageUrl}
                               alt={`${metadata?.project_name || project.title} project screenshot ${index + 1}`}
-                              className="w-full h-auto object-cover rounded-lg  cursor-pointer"
-                              loading="lazy"
+                              width={1600}
+                              height={900}
+                              className="w-full h-auto object-cover rounded-lg cursor-pointer"
+                              unoptimized
                             />
                           </button>
                         )}
@@ -723,13 +727,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                           aria-label={`View ${metadata?.project_name || project.title} screenshot ${index + 1} in lightbox`}
                         >
-                          <img
+                          <Image
                             src={imageUrl}
                             alt={`${metadata?.project_name || project.title} project screenshot ${index + 1}`}
-                            width="400"
-                            height="250"
+                            width={800}
+                            height={500}
                             className="w-full h-64 object-cover rounded-lg  cursor-pointer"
-                            loading="lazy"
+                            unoptimized
                           />
                         </button>
                       </div>
@@ -746,13 +750,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                           aria-label={`View ${metadata?.project_name || project.title} screenshot ${index + 1} in lightbox`}
                         >
-                          <img
+                          <Image
                             src={`${image.imgix_url}?w=800&h=500&fit=crop&auto=format,compress`}
                             alt={`${metadata?.project_name || project.title} project screenshot ${index + 1}`}
-                            width="400"
-                            height="250"
+                            width={800}
+                            height={500}
                             className="w-full h-64 object-cover rounded-lg  cursor-pointer"
-                            loading="lazy"
+                            unoptimized
                           />
                         </button>
                       </div>

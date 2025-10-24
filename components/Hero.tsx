@@ -86,7 +86,7 @@ function FluidFallback() {
 
 export default function Hero({ aboutMe }: HeroProps) {
   return (
-    <section className="h-[38.2vh] flex items-center justify-center relative overflow-hidden pt-16" role="banner" aria-label="Hero section introducing Nicolas Ménard">
+    <section className="h-[80vh] flex items-center justify-center relative overflow-hidden pt-16" role="banner" aria-label="Hero section introducing Nicolas Ménard">
       {/* Three.js Canvas with Fluid Background */}
       <div className="absolute inset-0 w-full h-full z-0" role="presentation" aria-hidden="true">
         <Canvas
@@ -122,7 +122,7 @@ export default function Hero({ aboutMe }: HeroProps) {
 
       {/* Animated arrow */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 pointer-events-auto">
-        <button 
+        <button
           onClick={() => {
             const workSection = document.getElementById('work')
             if (workSection) {
@@ -134,23 +134,24 @@ export default function Hero({ aboutMe }: HeroProps) {
           aria-label="Scroll to work section"
         >
           <div className="animate-bounce">
-            <svg 
-              className="w-6 h-6" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24" 
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
               />
             </svg>
           </div>
         </button>
       </div>
+
     </section>
   )
 }
