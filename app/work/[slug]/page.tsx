@@ -1,5 +1,5 @@
 // app/work/[slug]/page.tsx
-import { getProject, getProjects } from '@/lib/cosmic'
+import { getProject, getProjects, getAboutMe } from '@/lib/cosmic'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import ProjectDetail from '@/components/ProjectDetail'
@@ -47,18 +47,21 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params
-  const project = await getProject(slug)
-  
+  const [project, aboutMe] = await Promise.all([
+    getProject(slug),
+    getAboutMe().catch(() => null)
+  ])
+
   if (!project) {
     notFound()
   }
-  
+
   return (
     <div className="min-h-screen bg-gray-50">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-      <Navigation />
+      <Navigation aboutMe={aboutMe} />
       <main id="main-content" role="main">
         <ProjectDetail project={project} />
       </main>

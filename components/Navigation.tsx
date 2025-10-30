@@ -3,8 +3,13 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
+import { AboutMe } from '@/types'
 
-export default function Navigation() {
+interface NavigationProps {
+  aboutMe?: AboutMe | null
+}
+
+export default function Navigation({ aboutMe }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
@@ -65,33 +70,13 @@ export default function Navigation() {
       <nav role="navigation" aria-label="Main navigation">
       <div className="container">
         <div className="flex items-center justify-between h-16" data-aos="fade-down" data-aos-duration="400">
-          {pathname === '/' ? (
-            <Link 
-              href="/"
-              className="font-medium text-lg text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
-              aria-label="Navigate to home page"
-            >
-              Nicolas Ménard
-            </Link>
-          ) : (
-            isScrolled ? (
-              <Link
-                href="/"
-                className="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-600 rounded-full px-4 py-2"
-                aria-label="Go back to portfolio home page"
-              >
-                ← Back
-              </Link>
-            ) : (
-              <Link 
-                href="/"
-                className="font-medium text-lg text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
-                aria-label="Navigate to home page"
-              >
-                Nicolas Ménard
-              </Link>
-            )
-          )}
+          <Link
+            href="/"
+            className="font-medium text-lg text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md"
+            aria-label="Navigate to home page"
+          >
+            Nicolas Ménard
+          </Link>
           
           <div className="hidden md:flex space-x-8 font-medium" role="menubar" aria-label="Main menu">
             <button
@@ -118,16 +103,18 @@ export default function Navigation() {
             >
               Contact
             </button>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
-              role="menuitem"
-              aria-label="Open Resume in new tab"
-            >
-              Resume
-            </a>
+            {aboutMe?.metadata?.resume_cv?.url && (
+              <a
+                href={aboutMe.metadata.resume_cv.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-black hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md px-2 py-1"
+                role="menuitem"
+                aria-label="Open Resume in new tab"
+              >
+                Resume
+              </a>
+            )}
           </div>
         </div>
       </div>

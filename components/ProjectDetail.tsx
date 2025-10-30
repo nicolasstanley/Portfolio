@@ -75,7 +75,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         
         <div>
           {/* Project header */}
-          <div className="mb-12" data-aos="fade-up" data-aos-delay="200">
+          <div className="mb-12" data-aos="fade-up" data-aos-delay="50">
             <h1 className="font-bold text-gray-900 leading-tight" style={{ fontSize: '2rem', marginTop: '0', marginBottom: '1.6rem' }}>
               {metadata?.project_name || project.title}
             </h1>
@@ -93,7 +93,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       
       {/* Full width hero image */}
       {(metadata?.hero_image || metadata?.cloudinary_hero_image) && (
-        <div style={{ marginTop: '2em', marginBottom: '3em' }} data-aos="fade-up" data-aos-delay="400">
+        <div style={{ marginTop: '2em', marginBottom: '3em' }} data-aos="fade-up" data-aos-delay="100">
           <Image
             src={metadata.hero_image || metadata.cloudinary_hero_image}
             alt={`Hero image for ${metadata?.project_name || project.title} project`}
@@ -109,7 +109,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       
       <div className="container">
         {/* Project details */}
-        <div className="grid md:grid-cols-3 gap-12 mb-12 items-start" data-aos="fade-up" data-aos-delay="600">
+        <div className="grid md:grid-cols-3 gap-12 mb-12 items-start" data-aos="fade-up" data-aos-delay="150">
           <div className="md:col-span-2" style={{ display: 'flex', flexDirection: 'column', gap: '6rem' }}>
             {metadata?.description && (
               <div 
@@ -119,8 +119,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               />
             )}
             
-            {metadata?.project_overview && (
-              <div data-aos="fade-up" data-aos-delay="800">
+            {(metadata?.project_overview || metadata?.project_overview_image || metadata?.project_overview_image_2) && (
+              <div data-aos="fade-up" data-aos-delay="50">
                 {(metadata?.project_overview_image || metadata?.project_overview_image_2) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.project_overview_image && (
@@ -157,19 +157,21 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     )}
                   </div>
                 )}
-                <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {metadata.project_overview}
-                  </ReactMarkdown>
-                </div>
+                {metadata?.project_overview && (
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                    >
+                      {metadata.project_overview}
+                    </ReactMarkdown>
+                  </div>
+                )}
               </div>
             )}
             
-            {metadata?.challenge_and_research && (
-              <div data-aos="fade-up" data-aos-delay="1000">
+            {(metadata?.challenge_and_research || metadata?.challenge_and_research_image || metadata?.challenge_and_research_image_2 || metadata?.challenge_and_research_image_3) && (
+              <div data-aos="fade-up" data-aos-delay="50">
                 {(metadata?.challenge_and_research_image || metadata?.challenge_and_research_image_2 || metadata?.challenge_and_research_image_3) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.challenge_and_research_image && (
@@ -222,19 +224,21 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     )}
                   </div>
                 )}
-                <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {metadata.challenge_and_research}
-                  </ReactMarkdown>
-                </div>
+                {metadata?.challenge_and_research && (
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                    >
+                      {metadata.challenge_and_research}
+                    </ReactMarkdown>
+                  </div>
+                )}
               </div>
             )}
             
-            {metadata?.design_process && (
-              <div data-aos="fade-up" data-aos-delay="1200">
+            {(metadata?.design_process || metadata?.design_process_image || metadata?.design_process_image_2 || metadata?.design_process_image_3) && (
+              <div data-aos="fade-up" data-aos-delay="50">
                 {(metadata?.design_process_image || metadata?.design_process_image_2 || metadata?.design_process_image_3) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.design_process_image && (
@@ -287,19 +291,21 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     )}
                   </div>
                 )}
-                <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {metadata.design_process}
-                  </ReactMarkdown>
-                </div>
+                {metadata?.design_process && (
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                    >
+                      {metadata.design_process}
+                    </ReactMarkdown>
+                  </div>
+                )}
               </div>
             )}
             
-            {metadata?.solution && (
-              <div data-aos="fade-up" data-aos-delay="1400">
+            {(metadata?.solution || metadata?.solution_image || metadata?.solution_image_2 || metadata?.solution_image_3) && (
+              <div data-aos="fade-up" data-aos-delay="50">
                 {(metadata?.solution_image || metadata?.solution_image_2 || metadata?.solution_image_3) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.solution_image && (
@@ -352,19 +358,21 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     )}
                   </div>
                 )}
-                <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {metadata.solution}
-                  </ReactMarkdown>
-                </div>
+                {metadata?.solution && (
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                    >
+                      {metadata.solution}
+                    </ReactMarkdown>
+                  </div>
+                )}
               </div>
             )}
             
-            {metadata?.implementation_and_results && (
-              <div data-aos="fade-up" data-aos-delay="1600">
+            {(metadata?.implementation_and_results || metadata?.implementation_and_results_image || metadata?.implementation_and_results_image_2) && (
+              <div data-aos="fade-up" data-aos-delay="50">
                 {(metadata?.implementation_and_results_image || metadata?.implementation_and_results_image_2) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.implementation_and_results_image && (
@@ -401,19 +409,21 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     )}
                   </div>
                 )}
-                <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {metadata.implementation_and_results}
-                  </ReactMarkdown>
-                </div>
+                {metadata?.implementation_and_results && (
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                    >
+                      {metadata.implementation_and_results}
+                    </ReactMarkdown>
+                  </div>
+                )}
               </div>
             )}
             
-            {metadata?.reflection && (
-              <div data-aos="fade-up" data-aos-delay="1800">
+            {(metadata?.reflection || metadata?.reflection_image || metadata?.reflection_image_2) && (
+              <div data-aos="fade-up" data-aos-delay="50">
                 {(metadata?.reflection_image || metadata?.reflection_image_2) && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     {metadata?.reflection_image && (
@@ -450,20 +460,22 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     )}
                   </div>
                 )}
-                <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {metadata.reflection}
-                  </ReactMarkdown>
-                </div>
+                {metadata?.reflection && (
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                    >
+                      {metadata.reflection}
+                    </ReactMarkdown>
+                  </div>
+                )}
               </div>
             )}
             
             {/* Fallback sections for backwards compatibility */}
             {metadata?.challenge && !metadata?.challenge_and_research && (
-              <div data-aos="fade-up" data-aos-delay="2000">
+              <div data-aos="fade-up" data-aos-delay="50">
                 <p className="text-gray-700 text-base" style={{ lineHeight: '1.6' }}>
                   {metadata.challenge}
                 </p>
@@ -471,7 +483,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             )}
             
             {metadata?.solution && !metadata?.implementation_and_results && (
-              <div data-aos="fade-up" data-aos-delay="2200">
+              <div data-aos="fade-up" data-aos-delay="50">
                 {metadata?.solution_image && (
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     <button
@@ -769,25 +781,12 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         })()}
       </div>
 
-      {/* Back to Top Button */}
-      <div className="container mt-16 mb-8">
-        <div className="flex justify-center">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="bg-black hover:bg-gray-800 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-            aria-label="Scroll back to top of page"
-          >
-            Back to Top ↑
-          </button>
-        </div>
-      </div>
-
       {/* More Projects Section */}
       {otherProjects.length > 0 && (
         <section className="bg-white py-16 mt-16">
           <div className="container">
             <div className="mb-12">
-              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+              <h2 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
                 More Projects
               </h2>
               <p className="text-lg text-gray-600">

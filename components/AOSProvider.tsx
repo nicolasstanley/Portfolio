@@ -12,10 +12,12 @@ export default function AOSProvider({ children }: { children: React.ReactNode })
       ])
       
       AOS.init({
-        duration: 800,
+        duration: 400,
         easing: 'ease-out-cubic',
         once: true,
-        offset: 50,
+        offset: 300,
+        anchorPlacement: 'top-bottom',
+        mirror: false,
       })
     }
     

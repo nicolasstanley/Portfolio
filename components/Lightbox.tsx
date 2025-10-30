@@ -62,8 +62,8 @@ export default function Lightbox({
   const hasNext = currentIndex < images.length - 1
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 overflow-auto p-4"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -113,8 +113,8 @@ export default function Lightbox({
       )}
 
       {/* Main image container */}
-      <div 
-        className="relative max-w-7xl max-h-full"
+      <div
+        className="relative w-[90vw] my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Loading spinner */}
@@ -129,7 +129,7 @@ export default function Lightbox({
           src={currentImage}
           alt={`${projectTitle || 'Project'} screenshot ${currentIndex + 1} of ${images.length}`}
           loading="lazy"
-          className={`max-w-full max-h-[90vh] object-contain transition-opacity duration-300 ${
+          className={`w-full h-auto object-contain transition-opacity duration-300 ${
             imageLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           onLoad={() => setImageLoaded(true)}

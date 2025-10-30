@@ -14,7 +14,7 @@ export default function Experience({ experiences }: ExperienceProps) {
     <section id="experience" className="section bg-white" aria-labelledby="experience-heading">
       <div className="container">
         <div className="mb-16" data-aos="fade-up">
-          <h2 id="experience-heading" className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+          <h2 id="experience-heading" className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
             Experience
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl">
@@ -25,7 +25,7 @@ export default function Experience({ experiences }: ExperienceProps) {
         <div className="max-w-4xl md:mx-0">
           <div className="space-y-8" role="list" aria-label="Work experience timeline">
             {experiences.map((experience, index) => (
-              <div key={experience.id} role="listitem" data-aos="fade-up" data-aos-delay={index * 150}>
+              <div key={experience.id} role="listitem" data-aos="fade-up" data-aos-delay={index * 50}>
                 <ExperienceCard 
                   experience={experience} 
                   isLast={index === experiences.length - 1}

@@ -16,9 +16,9 @@ export default async function Page() {
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <Navigation />
+        <Navigation aboutMe={aboutMe} />
         <main id="main-content" role="main">
-          <HomePage 
+          <HomePage
             aboutMe={aboutMe}
             workExperience={workExperience}
             projects={projects}
@@ -34,9 +34,9 @@ export default async function Page() {
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <Navigation />
+        <Navigation aboutMe={null} />
         <main id="main-content" role="main">
-        <HomePage 
+        <HomePage
           aboutMe={null}
           workExperience={[]}
           projects={[]}
@@ -45,14 +45,14 @@ export default async function Page() {
         {/* Placeholder sections when data fails */}
         <section id="work" className="py-16 bg-white">
           <div className="container">
-            <h2 className="text-3xl font-bold text-center mb-12">Work</h2>
+            <h2 className="text-2xl font-normal text-center mb-12">Work</h2>
             <p className="text-center text-gray-600">Loading work...</p>
           </div>
         </section>
         
         <section id="experience" className="py-16 bg-gray-50">
           <div className="container">
-            <h2 className="text-3xl font-bold mb-12">Experience</h2>
+            <h2 className="text-2xl font-normal mb-12">Experience</h2>
             <p className="text-gray-600">Loading experience...</p>
           </div>
         </section>
@@ -60,7 +60,7 @@ export default async function Page() {
         
         <section id="contact" className="py-16 bg-gray-50">
           <div className="container">
-            <h2 className="text-3xl font-bold mb-12">Contact</h2>
+            <h2 className="text-2xl font-normal mb-12">Contact</h2>
             <p className="text-gray-600">Loading contact information...</p>
           </div>
         </section>

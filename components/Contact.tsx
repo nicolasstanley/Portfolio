@@ -14,7 +14,7 @@ export default function Contact({ aboutMe }: ContactProps) {
       <section id="contact" className="section bg-white">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4">
               Get In Touch
             </h2>
             <div className="w-20 h-1 bg-primary-600 mx-auto mb-6"></div>
@@ -31,7 +31,7 @@ export default function Contact({ aboutMe }: ContactProps) {
     <section id="contact" className="section bg-white">
       <div className="container">
         <div className="mb-16" data-aos="fade-up">
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+          <h2 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
             Get In Touch
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl leading-6">
@@ -40,7 +40,7 @@ export default function Contact({ aboutMe }: ContactProps) {
         </div>
           
           <div className="flex flex-col md:flex-row gap-12 items-start">
-            <div className="md:order-1" data-aos="fade-up" data-aos-delay="200">
+            <div className="md:order-1" data-aos="fade-up" data-aos-delay="50">
               {metadata?.profile_image && (
                 <div className="relative w-full md:w-80">
                   <img
@@ -54,7 +54,7 @@ export default function Contact({ aboutMe }: ContactProps) {
               )}
             </div>
             
-            <div className="w-full md:flex-1 md:order-2" data-aos="fade-up" data-aos-delay="400">
+            <div className="w-full md:flex-1 md:order-2" data-aos="fade-up" data-aos-delay="100">
               <div className="space-y-6">
                 {metadata?.email && (
                   <div className="flex items-center">
