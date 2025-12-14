@@ -1,12 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      'cdn.cosmicjs.com',
-      'imgix.cosmicjs.com',
-      'images.unsplash.com',
-      'res.cloudinary.com'
-    ],
     remotePatterns: [
       {
         protocol: 'https',
@@ -28,9 +22,6 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true
-  },
-  eslint: {
-    ignoreDuringBuilds: false
   },
   // Vercel optimizations
   experimental: {
