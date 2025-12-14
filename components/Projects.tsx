@@ -11,12 +11,9 @@ export default function Projects({ projects }: ProjectsProps) {
     <section id="work" className="section bg-gray-50" aria-labelledby="work-heading">
       <div className="container">
         <div className="mb-16" data-aos="fade-up">
-          <h2 id="work-heading" className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
+          <h2 id="work-heading" className="text-2xl md:text-3xl font-normal text-gray-900 leading-tight">
             Projects
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl">
-            Here are some of my recent design projects that showcase my approach to solving complex user experience challenges.
-          </p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8" role="list" aria-label="Portfolio projects">

@@ -14,12 +14,9 @@ export default function Experience({ experiences }: ExperienceProps) {
     <section id="experience" className="section bg-white" aria-labelledby="experience-heading">
       <div className="container">
         <div className="mb-16" data-aos="fade-up">
-          <h2 id="experience-heading" className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
+          <h2 id="experience-heading" className="text-2xl md:text-3xl font-normal text-gray-900 leading-tight">
             Experience
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl">
-            My professional journey in UX design, from junior roles to senior positions.
-          </p>
         </div>
         
         <div className="max-w-4xl md:mx-0">
