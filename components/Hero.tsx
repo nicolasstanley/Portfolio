@@ -110,7 +110,7 @@ export default function Hero({ aboutMe }: HeroProps) {
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 -z-10" />
 
       {/* Content */}
-      <div className="container relative z-10 pointer-events-none transform -translate-y-12 md:-translate-y-6">
+      <div className="container relative z-10 pointer-events-none transform -translate-y-16 md:-translate-y-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8">
           {/* WaveMesh - above on mobile, right on desktop */}
           <div className="w-80 h-80 md:w-[512px] md:h-[512px] md:order-2 md:flex-shrink-0 mx-auto md:mx-0" data-aos="fade-up" data-aos-duration="1000">
@@ -118,7 +118,7 @@ export default function Hero({ aboutMe }: HeroProps) {
           </div>
 
           {/* Text content - below on mobile, left on desktop */}
-          <div className="flex-1 md:order-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+          <div className="flex-1 md:order-1">
             <h1 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-semibold leading-relaxed">
               Hi, I'm Nicolas 👋
             </h1>
