@@ -5,6 +5,7 @@ import { Canvas, useThree, useFrame } from '@react-three/fiber'
 import { useFluid } from '@funtech-inc/use-shader-fx'
 import { AboutMe } from '@/types'
 import * as THREE from 'three'
+import WaveMesh from '@/components/WaveMesh'
 
 interface HeroProps {
   aboutMe: AboutMe | null
@@ -107,16 +108,24 @@ export default function Hero({ aboutMe }: HeroProps) {
 
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 -z-10" />
-      
+
       {/* Content */}
-      <div className="container relative z-10 pointer-events-none transform -translate-y-6">
-        <div data-aos="fade-up" data-aos-duration="1000">
-          <h1 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-semibold leading-relaxed">
-            Hi, I'm Nicolas 👋
-          </h1>
-          <p className="text-lg text-gray-500 max-w-2xl leading-6">
-            I'm a results-driven designer who specializes in solving complex product challenges, with proven experience leading teams and conducting user research.
-          </p>
+      <div className="container relative z-10 pointer-events-none transform -translate-y-12 md:-translate-y-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8">
+          {/* WaveMesh - above on mobile, right on desktop */}
+          <div className="w-80 h-80 md:w-[512px] md:h-[512px] md:order-2 md:flex-shrink-0 mx-auto md:mx-0" data-aos="fade-up" data-aos-duration="1000">
+            <WaveMesh />
+          </div>
+
+          {/* Text content - below on mobile, left on desktop */}
+          <div className="flex-1 md:order-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <h1 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-semibold leading-relaxed">
+              Hi, I'm Nicolas 👋
+            </h1>
+            <p className="text-lg text-gray-500 leading-6">
+              I'm a results-driven designer who specializes in solving complex product challenges, with proven experience leading teams and conducting user research.
+            </p>
+          </div>
         </div>
       </div>
 
