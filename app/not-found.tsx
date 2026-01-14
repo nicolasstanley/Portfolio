@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import HalftoneBackground from '@/components/HalftoneBackground'
 
 export default function NotFound() {
@@ -10,13 +9,13 @@ export default function NotFound() {
         <h1 id="not-found-heading" className="text-2xl md:text-3xl font-semibold text-white mb-4">
           Page Not Found
         </h1>
-        <Link
+        <a
           href="/"
           className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent border border-white/20"
           aria-label="Go back to portfolio home page"
         >
           ← Back to Portfolio
-        </Link>
+        </a>
       </div>
     </main>
   )
