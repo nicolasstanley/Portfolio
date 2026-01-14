@@ -120,7 +120,7 @@ export default function Hero({ aboutMe }: HeroProps) {
           {/* Text content - below on mobile, left on desktop */}
           <div className="flex-1 md:order-1">
             <h1 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-semibold leading-relaxed">
-              Hi, I'm Nicolas 👋
+              Engineering mindset, user-obsessed heart
             </h1>
             <p className="text-lg text-gray-500 leading-6">
               I'm a results-driven designer who specializes in solving complex product challenges, with proven experience leading teams and conducting user research.
