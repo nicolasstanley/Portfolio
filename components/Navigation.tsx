@@ -66,9 +66,9 @@ export default function Navigation({ aboutMe }: NavigationProps) {
                   onClick={() => handleNavigation('contact')}
                   className="hidden md:block text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-full px-4 py-2"
                   role="menuitem"
-                  aria-label="Navigate to Contact section"
+                  aria-label="Navigate to About me section"
                 >
-                  Contact
+                  About me
                 </button>
                 {aboutMe?.metadata?.resume_cv?.url && (
                   <a

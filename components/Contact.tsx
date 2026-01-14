@@ -32,11 +32,22 @@ export default function Contact({ aboutMe }: ContactProps) {
       <div className="container">
         <div className="mb-16" data-aos="fade-up">
           <h2 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
-            Get In Touch
+            About me
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl leading-6">
-            I'm always interested in discussing new opportunities, design challenges, and collaborative projects.
-          </p>
+          <div className="text-lg text-gray-600 max-w-2xl leading-6 space-y-4">
+            <p>
+              I'm a design leader with 10+ years years shipping products across education, energy, mobility, and AI/robotics — turning complex challenges into meaningful, measurable outcomes — for users, teams and businesses.
+            </p>
+            <p>
+              Most recently, I led a team of designers at EF's Global Creative Studio, shaping the Design System and User Research strategy with product teams at EF. I helped grow the team, improved workflows, and delivered business-critical initiatives across digital and service touchpoints. I thrive at the intersection of product, tech and brand — aligning cross-functional teams, building design and research ops, and driving clarity in complex environments.
+            </p>
+            <p>
+              Before EF, I designed autonomous valet parking experiences at Stanley Robotics (employee #5, scaled to 70+) and reimagined EV charging flows at Barry Energy and Electromaps based on multi-country user research.
+            </p>
+            <p>
+              Outside of work, you'll find me climbing mountains, ski touring, and satisfying my never ending curiosity learning new things.
+            </p>
+          </div>
         </div>
           
           <div className="flex flex-col md:flex-row gap-12 items-start">
