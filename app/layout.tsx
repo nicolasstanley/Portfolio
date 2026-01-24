@@ -37,6 +37,10 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         
+        {/* Font preloading for better LCP */}
+        <link rel="preload" href="/pp-neue-montreal/ppneuemontreal-book.otf" as="font" type="font/otf" crossOrigin="anonymous" />
+        <link rel="preload" href="/pp-neue-montreal/ppneuemontreal-medium.otf" as="font" type="font/otf" crossOrigin="anonymous" />
+
         {/* Favicons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

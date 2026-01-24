@@ -1,121 +1,29 @@
 'use client'
 
-import { Suspense, useRef, useEffect } from 'react'
-import { Canvas, useThree, useFrame } from '@react-three/fiber'
-import { useFluid } from '@funtech-inc/use-shader-fx'
 import { AboutMe } from '@/types'
-import * as THREE from 'three'
 import WaveMesh from '@/components/WaveMesh'
+
+const SHOW_WAVE_MESH = true
 
 interface HeroProps {
   aboutMe: AboutMe | null
 }
 
-// Fluid background component
-function FluidBackground() {
-  const { viewport, size } = useThree()
-  const mouseRef = useRef(new THREE.Vector2())
-  const timeRef = useRef(0)
-  
-  const fluidHookResult = useFluid({
-    size: {
-      width: Math.floor(size.width),
-      height: Math.floor(size.height),
-      top: 0,
-      left: 0
-    } as any,
-    dpr: 1,
-  } as any)
-
-  // Handle mouse movement for cursor tracking
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      // Convert mouse coordinates to normalized device coordinates (-1 to +1)
-      const rect = document.body.getBoundingClientRect()
-      mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
-      mouseRef.current.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-  
-  // Access the correct properties from the hook result
-  const updateFluid = fluidHookResult.render
-  const output = fluidHookResult.texture || fluidHookResult.velocity
-
-  useFrame((state) => {
-    timeRef.current += 0.01
-    
-    if (updateFluid && typeof updateFluid === 'function') {
-      try {
-        // Call the render function with the state object
-        updateFluid(state)
-      } catch (error) {
-        console.error('Error updating fluid:', error)
-      }
-    }
-  })
-
-  return (
-    <mesh scale={[viewport.width * 1.1, viewport.height * 1.1, 1]} position={[0, 0, 0]}>
-      <planeGeometry args={[1, 1]} />
-      <meshBasicMaterial 
-        map={output} 
-        transparent={true}
-        opacity={0.7}
-        side={2} // Double-sided
-      />
-    </mesh>
-  )
-}
-
-// Loading fallback
-function FluidFallback() {
-  return (
-    <mesh scale={[2, 2, 1]}>
-      <planeGeometry />
-      <meshStandardMaterial 
-        color="#3b82f6" 
-        transparent={true}
-        opacity={0.3}
-      />
-    </mesh>
-  )
-}
-
-
 export default function Hero({ aboutMe }: HeroProps) {
   return (
-    <section className="h-[80vh] flex items-center justify-center relative overflow-hidden pt-16" role="banner" aria-label="Hero section introducing Nicolas Ménard">
-      {/* Three.js Canvas with Fluid Background */}
-      <div className="absolute inset-0 w-full h-full z-0" role="presentation" aria-hidden="true">
-        <Canvas
-          camera={{ position: [0, 0, 2], fov: 100 }}
-          gl={{ alpha: true, antialias: true, preserveDrawingBuffer: true }}
-          style={{ 
-            background: 'transparent',
-            width: '100%',
-            height: '100%'
-          }}
-          dpr={[1, 2]}
-        >
-          <Suspense fallback={<FluidFallback />}>
-            <FluidBackground />
-          </Suspense>
-        </Canvas>
-      </div>
-
+    <section className="h-[80vh] flex items-center justify-center relative overflow-hidden pt-24" role="banner" aria-label="Hero section introducing Nicolas Ménard">
       {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 -z-10" />
+      <div className="absolute inset-0 bg-white" />
 
       {/* Content */}
       <div className="container relative z-10 pointer-events-none transform -translate-y-16 md:-translate-y-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8">
-          {/* WaveMesh - above on mobile, right on desktop */}
-          <div className="w-80 h-80 md:w-[512px] md:h-[512px] md:order-2 md:flex-shrink-0 mx-auto md:mx-0" data-aos="fade-up" data-aos-duration="1000">
-            <WaveMesh />
-          </div>
+          {/* WaveMesh - hidden on mobile, right on desktop */}
+          {SHOW_WAVE_MESH && (
+            <div className="hidden md:block md:w-[512px] md:h-[512px] md:order-2 md:flex-shrink-0" data-aos="fade-up" data-aos-duration="1000">
+              <WaveMesh />
+            </div>
+          )}
 
           {/* Text content - below on mobile, left on desktop */}
           <div className="flex-1 md:order-1">
@@ -160,7 +68,6 @@ export default function Hero({ aboutMe }: HeroProps) {
           </div>
         </button>
       </div>
-
     </section>
   )
 }

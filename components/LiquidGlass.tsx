@@ -139,7 +139,6 @@ export default function LiquidGlass({ className = '', children }: LiquidGlassPro
       gl.compileShader(shader)
       
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error('Shader compile error:', gl.getShaderInfoLog(shader))
         gl.deleteShader(shader)
         return null
       }
@@ -156,7 +155,6 @@ export default function LiquidGlass({ className = '', children }: LiquidGlassPro
       gl.linkProgram(program)
       
       if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.error('Program link error:', gl.getProgramInfoLog(program))
         gl.deleteProgram(program)
         return null
       }
@@ -211,7 +209,6 @@ export default function LiquidGlass({ className = '', children }: LiquidGlassPro
       canvas.style.height = rect.height + 'px'
       
       gl.viewport(0, 0, canvas.width, canvas.height)
-      console.log(`LiquidGlass: Canvas resized to ${canvas.width}x${canvas.height}`)
     }
 
     function render() {

@@ -7,16 +7,10 @@ export default function HalftoneBackground() {
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) {
-      console.error('Canvas element not found')
-      return
-    }
+    if (!canvas) return
 
     const ctx = canvas.getContext('2d')
-    if (!ctx) {
-      console.error('Could not get canvas context')
-      return
-    }
+    if (!ctx) return
 
     let width: number, height: number
     let dots: Array<{
@@ -36,7 +30,6 @@ export default function HalftoneBackground() {
       if (!canvas) return
       width = canvas.width = window.innerWidth
       height = canvas.height = window.innerHeight
-      console.log('Canvas resized to:', width, 'x', height)
       initDots()
     }
 
@@ -55,7 +48,6 @@ export default function HalftoneBackground() {
           })
         }
       }
-      console.log('Initialized', dots.length, 'dots')
     }
 
     // Define color palette
@@ -134,7 +126,6 @@ export default function HalftoneBackground() {
     window.addEventListener('resize', handleResize)
     resize()
     animate()
-    console.log('Animation started')
 
     // Cleanup
     return () => {

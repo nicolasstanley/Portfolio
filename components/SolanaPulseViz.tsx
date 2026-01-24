@@ -7,7 +7,7 @@ import Link from 'next/link'
 const COLORS: Record<string, string> = {
   transfer: '#14F195',
   vote: '#9945FF',
-  stake: '#19FB9B',
+  stake: '#19D5FB',
   swap: '#FFB84D',
   nft: '#FF6B9D'
 }

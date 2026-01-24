@@ -23,6 +23,13 @@ const experiments: Experiment[] = [
     thumbnail: '/experiments/pixel-waves.png',
     tags: ['Pixel art', 'Animation'],
   },
+  {
+    slug: 'fluid-cursor',
+    title: 'Fluid Cursor',
+    description: 'An interactive fluid simulation that responds to cursor movement',
+    thumbnail: '/experiments/fluid-cursor.png',
+    tags: ['Shader', 'Three.js', 'WebGL'],
+  },
 ]
 
 export default async function ExperimentsPage() {

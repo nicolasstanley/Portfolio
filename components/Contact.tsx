@@ -30,28 +30,42 @@ export default function Contact({ aboutMe }: ContactProps) {
   return (
     <section id="contact" className="section bg-white">
       <div className="container">
-        <div className="mb-16" data-aos="fade-up">
-          <h2 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
-            About me
-          </h2>
-          <div className="text-lg text-gray-600 max-w-2xl leading-6 space-y-4">
-            <p>
-              I'm a design leader with 10+ years years shipping products across education, energy, mobility, and AI/robotics — turning complex challenges into meaningful, measurable outcomes — for users, teams and businesses.
-            </p>
-            <p>
-              Most recently, I led a team of designers at EF's Global Creative Studio, shaping the Design System and User Research strategy with product teams at EF. I helped grow the team, improved workflows, and delivered business-critical initiatives across digital and service touchpoints. I thrive at the intersection of product, tech and brand — aligning cross-functional teams, building design and research ops, and driving clarity in complex environments.
-            </p>
-            <p>
-              Before EF, I designed autonomous valet parking experiences at Stanley Robotics (employee #5, scaled to 70+) and reimagined EV charging flows at Barry Energy and Electromaps based on multi-country user research.
-            </p>
-            <p>
-              Outside of work, you'll find me climbing mountains, ski touring, and satisfying my never ending curiosity learning new things.
-            </p>
+        <div className="mb-16 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start" data-aos="fade-up">
+          {metadata?.profile_image && (
+            <div className="hidden lg:block lg:w-80 flex-shrink-0 lg:order-1">
+              <img
+                src={typeof metadata.profile_image === 'string'
+                  ? metadata.profile_image
+                  : `${metadata.profile_image.imgix_url}?w=400&auto=format,compress`}
+                alt={metadata?.full_name || 'Profile'}
+                className="w-full h-auto object-contain rounded-lg shadow-lg"
+              />
+            </div>
+          )}
+          <div className="flex-1 lg:order-2">
+            <h2 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
+              About me
+            </h2>
+            <div className="text-lg text-gray-600 max-w-2xl leading-6 space-y-4">
+              <p>
+                I'm a product designer with 10+ years shipping products across education, energy, mobility, and AI/robotics — turning complex challenges into meaningful, measurable outcomes.
+              </p>
+              <p>
+                Most recently, I led a team of designers at EF's Global Creative Studio, shaping the Design System and User Research strategy with product teams at EF. I helped grow the team, improved workflows, and delivered business-critical initiatives across digital and service touchpoints. I thrive at the intersection of product, tech and brand — aligning cross-functional teams, building design and research ops, and driving clarity in complex environments.
+              </p>
+              <p>
+                Before EF, I designed autonomous valet parking experiences at Stanley Robotics (employee #5, scaled to 70+) and reimagined EV charging flows at Barry Energy and Electromaps based on multi-country user research.
+              </p>
+              <p>
+                Outside of work, you'll find me climbing mountains, ski touring, and satisfying my never ending curiosity learning new things.
+              </p>
+            </div>
           </div>
         </div>
-          
-          <div className="flex flex-col md:flex-row gap-12 items-start">
-            <div className="md:order-1" data-aos="fade-up" data-aos-delay="50">
+
+          <div className="flex flex-col md:flex-row gap-12 items-start lg:pl-[calc(20rem+4rem)]">
+            {/* Profile image - mobile only */}
+            <div className="lg:hidden" data-aos="fade-up" data-aos-delay="50">
               {metadata?.profile_image && (
                 <div className="relative w-full md:w-80">
                   <img
@@ -64,8 +78,8 @@ export default function Contact({ aboutMe }: ContactProps) {
                 </div>
               )}
             </div>
-            
-            <div className="w-full md:flex-1 md:order-2" data-aos="fade-up" data-aos-delay="100">
+
+            <div className="w-full md:flex-1" data-aos="fade-up" data-aos-delay="100">
               <div className="space-y-6">
                 {metadata?.email && (
                   <div className="flex items-center">

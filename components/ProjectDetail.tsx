@@ -6,11 +6,10 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import { useState, useEffect } from 'react'
-import { Project, AboutMe } from '@/types'
+import { Project } from '@/types'
 import Lightbox from './Lightbox'
 import ProjectCard from './ProjectCard'
-import Contact from './Contact'
-import { getProjects, getAboutMe } from '@/lib/cosmic'
+import { getProjects } from '@/lib/cosmic'
 
 interface ProjectDetailProps {
   project: Project
@@ -22,22 +21,17 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [galleryImages, setGalleryImages] = useState<string[]>([])
   const [otherProjects, setOtherProjects] = useState<Project[]>([])
-  const [aboutMe, setAboutMe] = useState<AboutMe | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [projectsData, aboutMeData] = await Promise.all([
-          getProjects(),
-          getAboutMe()
-        ])
-        
+        const projectsData = await getProjects()
+
         // Filter out the current project and limit to 4 other projects for "More Projects" section
         const filtered = projectsData
           .filter(p => p.id !== project.id)
           .slice(0, 4)
         setOtherProjects(filtered)
-        setAboutMe(aboutMeData)
       } catch (error) {
         console.error('Error fetching data:', error)
       }
@@ -65,7 +59,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   }
 
   return (
-    <article className="pt-20 pb-16">
+    <article className="pt-36 pb-16">
       <style jsx>{`
         .prose h4 {
           margin-top: 2.2rem !important;
@@ -804,8 +798,6 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           </div>
         </section>
       )}
-
-      <Contact aboutMe={aboutMe} />
 
       {/* Lightbox */}
       <Lightbox

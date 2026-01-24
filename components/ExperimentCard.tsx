@@ -42,7 +42,7 @@ export default function ExperimentCard({ experiment }: ExperimentCardProps) {
             >
               <source src={thumbnail} type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-black/60" aria-hidden="true"></div>
+            <div className="absolute inset-0 bg-gradient-to-br" aria-hidden="true"></div>
           </>
         ) : (
           <img
@@ -57,7 +57,7 @@ export default function ExperimentCard({ experiment }: ExperimentCardProps) {
         )}
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-black/60" aria-hidden="true"></div>
+        <div className="absolute inset-0 bg-gradient-to-br" aria-hidden="true"></div>
 
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" aria-hidden="true"></div>
