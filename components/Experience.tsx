@@ -14,12 +14,12 @@ export default function Experience({ experiences }: ExperienceProps) {
     <section id="experience" className="section bg-white" aria-labelledby="experience-heading">
       <div className="container">
         <div className="mb-16" data-aos="fade-up">
-          <h2 id="experience-heading" className="text-2xl md:text-3xl font-normal text-gray-900 leading-tight">
+          <h2 id="experience-heading" className="text-2xl md:text-3xl font-normal text-gray-900 leading-tight pl-4 md:pl-0">
             Experience
           </h2>
         </div>
         
-        <div className="max-w-4xl md:mx-0">
+        <div>
           <div className="space-y-8" role="list" aria-label="Work experience timeline">
             {experiences.map((experience, index) => (
               <div key={experience.id} role="listitem" data-aos="fade-up" data-aos-delay={index * 50}>

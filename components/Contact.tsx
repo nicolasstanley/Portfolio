@@ -43,10 +43,10 @@ export default function Contact({ aboutMe }: ContactProps) {
             </div>
           )}
           <div className="flex-1 lg:order-2">
-            <h2 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
+            <h2 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight pl-4 md:pl-0">
               About me
             </h2>
-            <div className="text-lg text-gray-600 max-w-2xl leading-6 space-y-4">
+            <div className="text-lg text-gray-600 max-w-2xl leading-6 space-y-4 px-4 md:px-0">
               <p>
                 I'm a product designer with 10+ years shipping products across education, energy, mobility, and AI/robotics — turning complex challenges into meaningful, measurable outcomes.
               </p>

@@ -11,7 +11,7 @@ export default function Projects({ projects }: ProjectsProps) {
     <section id="work" className="section bg-gray-50" aria-labelledby="work-heading">
       <div className="container">
         <div className="mb-16" data-aos="fade-up">
-          <h2 id="work-heading" className="text-2xl md:text-3xl font-normal text-gray-900 leading-tight">
+          <h2 id="work-heading" className="text-2xl md:text-3xl font-normal text-gray-900 leading-tight pl-4 md:pl-0">
             Projects
           </h2>
         </div>
