@@ -89,7 +89,7 @@ export default function WaveMesh() {
   const meshPaths = useMemo(() => generateIsometricMesh(amplitude, frequency, timeRef.current), [frame, amplitude, frequency]);
 
   return (
-    <svg viewBox="0 0 800 600" className="w-full h-full">
+    <svg viewBox="95 120 610 360" className="w-full h-full">
       <g>
         {meshPaths.map((pathData, i) => (
           <path

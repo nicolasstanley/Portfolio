@@ -11,16 +11,16 @@ interface HeroProps {
 
 export default function Hero({ aboutMe }: HeroProps) {
   return (
-    <section className="h-[80vh] flex items-center justify-center relative overflow-hidden pt-24" role="banner" aria-label="Hero section introducing Nicolas Ménard">
+    <section className="h-screen md:h-[80vh] flex items-center justify-center relative overflow-hidden pt-24 pb-24 md:pb-0" role="banner" aria-label="Hero section introducing Nicolas Ménard">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-white" />
 
       {/* Content */}
-      <div className="container relative z-10 pointer-events-none transform -translate-y-16 md:-translate-y-6">
+      <div className="container relative z-10 pointer-events-none">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8">
-          {/* WaveMesh - hidden on mobile, right on desktop */}
+          {/* WaveMesh - visible on all screens, right on desktop */}
           {SHOW_WAVE_MESH && (
-            <div className="hidden md:block md:w-[512px] md:h-[512px] md:order-2 md:flex-shrink-0" data-aos="fade-up" data-aos-duration="1000">
+            <div className="w-full aspect-[4/3] md:w-[512px] md:h-[512px] md:order-2 md:flex-shrink-0 md:aspect-auto" data-aos="fade-up" data-aos-duration="1000">
               <WaveMesh />
             </div>
           )}
@@ -28,7 +28,7 @@ export default function Hero({ aboutMe }: HeroProps) {
           {/* Text content - below on mobile, left on desktop */}
           <div className="flex-1 md:order-1">
             <h1 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-semibold leading-relaxed">
-              Engineering mindset, user-obsessed heart
+              Engineering mindset,<br className="md:hidden" /> user-obsessed heart
             </h1>
             <p className="text-lg text-gray-500 leading-6">
               I'm a results-driven designer who specializes in solving complex product challenges, with proven experience leading teams and conducting user research.
