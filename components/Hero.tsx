@@ -28,7 +28,7 @@ export default function Hero({ aboutMe }: HeroProps) {
           {/* Text content - below on mobile, left on desktop */}
           <div className="flex-1 md:order-1 md:max-w-xl lg:max-w-2xl px-4 md:px-0 text-center md:text-left">
             <h1 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-semibold leading-relaxed">
-              Engineering mindset,<br className="md:hidden" /> user-obsessed heart
+              Engineering mindset,<br className="md:hidden" /> user-focused heart
             </h1>
             <p className="text-lg text-gray-500 leading-6">
               I'm a results-driven designer who specializes in solving complex product challenges, with proven experience leading teams and conducting user research.
