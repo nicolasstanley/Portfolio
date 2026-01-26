@@ -8,6 +8,7 @@ export default function AOSProvider({ children }: { children: React.ReactNode })
       // Dynamically import both AOS and its CSS
       const [{ default: AOS }] = await Promise.all([
         import('aos'),
+        // @ts-expect-error - CSS imports don't have types
         import('aos/dist/aos.css')
       ])
       

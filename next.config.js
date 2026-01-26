@@ -32,9 +32,6 @@ const nextConfig = {
       }
     ]
   },
-  typescript: {
-    ignoreBuildErrors: true
-  },
   // Vercel optimizations
   experimental: {
     optimizePackageImports: ['@vercel/speed-insights']

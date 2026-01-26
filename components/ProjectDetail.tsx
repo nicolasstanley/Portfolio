@@ -123,14 +123,17 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View overview image for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <Image
-                          src={metadata.project_overview_image}
-                          alt={`Overview image for ${metadata?.project_name || project.title}`}
-                          width={1600}
-                          height={800}
-                          className="w-full object-cover rounded-lg cursor-pointer"
-                          unoptimized
-                        />
+                        <div className="w-full overflow-hidden" style={{ maxHeight: '538px', borderRadius: '0.5rem' }}>
+                          <Image
+                            src={metadata.project_overview_image}
+                            alt={`Overview image for ${metadata?.project_name || project.title}`}
+                            width={1600}
+                            height={800}
+                            className="w-full object-cover cursor-pointer"
+                            style={{ borderRadius: '0.5rem' }}
+                            unoptimized
+                          />
+                        </div>
                       </button>
                     )}
                     {metadata?.project_overview_image_2 && (
@@ -139,20 +142,23 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                         aria-label={`View overview image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <Image
-                          src={metadata.project_overview_image_2}
-                          alt={`Overview image 2 for ${metadata?.project_name || project.title}`}
-                          width={1600}
-                          height={800}
-                          className="w-full object-cover rounded-lg cursor-pointer"
-                          unoptimized
-                        />
+                        <div className="w-full overflow-hidden" style={{ maxHeight: '538px', borderRadius: '0.5rem' }}>
+                          <Image
+                            src={metadata.project_overview_image_2}
+                            alt={`Overview image 2 for ${metadata?.project_name || project.title}`}
+                            width={1600}
+                            height={800}
+                            className="w-full object-cover cursor-pointer"
+                            style={{ borderRadius: '0.5rem' }}
+                            unoptimized
+                          />
+                        </div>
                       </button>
                     )}
                   </div>
                 )}
                 {metadata?.project_overview && (
-                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-5 [&_ul]:mb-6 [&_li]:mb-2 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium [&_blockquote]:bg-gray-100 [&_blockquote]:p-6 [&_blockquote]:rounded-lg [&_blockquote]:text-lg [&_blockquote]:text-gray-700 [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:my-8 [&_blockquote]:not-italic [&_blockquote_p]:text-lg [&_table]:w-full [&_table]:my-8 [&_table]:bg-gray-50 [&_table]:rounded-lg [&_table]:overflow-hidden [&_table]:border [&_table]:border-gray-200 [&_thead]:bg-gray-100 [&_th]:p-4 [&_th]:text-left [&_th]:font-semibold [&_th]:text-gray-900 [&_td]:p-4 [&_td]:border-t [&_td]:border-gray-200 [&_tr]:hover:bg-gray-100 [&_img]:rounded-lg [&_img]:max-h-[538px] [&_img]:object-cover" style={{ lineHeight: '1.6' }}>
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw]}
@@ -174,14 +180,17 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View challenge & research image for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <Image
-                          src={metadata.challenge_and_research_image}
-                          alt={`Challenge & Research image for ${metadata?.project_name || project.title}`}
-                          width={1600}
-                          height={800}
-                          className="w-full object-cover rounded-lg cursor-pointer"
-                          unoptimized
-                        />
+                        <div className="w-full overflow-hidden" style={{ maxHeight: '538px', borderRadius: '0.5rem' }}>
+                          <Image
+                            src={metadata.challenge_and_research_image}
+                            alt={`Challenge & Research image for ${metadata?.project_name || project.title}`}
+                            width={1600}
+                            height={800}
+                            className="w-full object-cover cursor-pointer"
+                            style={{ borderRadius: '0.5rem' }}
+                            unoptimized
+                          />
+                        </div>
                       </button>
                     )}
                     {metadata?.challenge_and_research_image_2 && (
@@ -190,14 +199,17 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View challenge & research image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <Image
-                          src={metadata.challenge_and_research_image_2}
-                          alt={`Challenge & Research image 2 for ${metadata?.project_name || project.title}`}
-                          width={1600}
-                          height={800}
-                          className="w-full object-cover rounded-lg cursor-pointer"
-                          unoptimized
-                        />
+                        <div className="w-full overflow-hidden" style={{ maxHeight: '538px', borderRadius: '0.5rem' }}>
+                          <Image
+                            src={metadata.challenge_and_research_image_2}
+                            alt={`Challenge & Research image 2 for ${metadata?.project_name || project.title}`}
+                            width={1600}
+                            height={800}
+                            className="w-full object-cover cursor-pointer"
+                            style={{ borderRadius: '0.5rem' }}
+                            unoptimized
+                          />
+                        </div>
                       </button>
                     )}
                     {metadata?.challenge_and_research_image_3 && (
@@ -206,20 +218,23 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                         aria-label={`View challenge & research image 3 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <Image
-                          src={metadata.challenge_and_research_image_3}
-                          alt={`Challenge & Research image 3 for ${metadata?.project_name || project.title}`}
-                          width={1600}
-                          height={800}
-                          className="w-full object-cover rounded-lg cursor-pointer"
-                          unoptimized
-                        />
+                        <div className="w-full overflow-hidden" style={{ maxHeight: '538px', borderRadius: '0.5rem' }}>
+                          <Image
+                            src={metadata.challenge_and_research_image_3}
+                            alt={`Challenge & Research image 3 for ${metadata?.project_name || project.title}`}
+                            width={1600}
+                            height={800}
+                            className="w-full object-cover cursor-pointer"
+                            style={{ borderRadius: '0.5rem' }}
+                            unoptimized
+                          />
+                        </div>
                       </button>
                     )}
                   </div>
                 )}
                 {metadata?.challenge_and_research && (
-                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-5 [&_ul]:mb-6 [&_li]:mb-2 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium [&_blockquote]:bg-gray-100 [&_blockquote]:p-6 [&_blockquote]:rounded-lg [&_blockquote]:text-lg [&_blockquote]:text-gray-700 [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:my-8 [&_blockquote]:not-italic [&_blockquote_p]:text-lg [&_table]:w-full [&_table]:my-8 [&_table]:bg-gray-50 [&_table]:rounded-lg [&_table]:overflow-hidden [&_table]:border [&_table]:border-gray-200 [&_thead]:bg-gray-100 [&_th]:p-4 [&_th]:text-left [&_th]:font-semibold [&_th]:text-gray-900 [&_td]:p-4 [&_td]:border-t [&_td]:border-gray-200 [&_tr]:hover:bg-gray-100 [&_img]:rounded-lg [&_img]:max-h-[538px] [&_img]:object-cover" style={{ lineHeight: '1.6' }}>
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw]}
@@ -241,14 +256,17 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View design process image for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <Image
-                          src={metadata.design_process_image}
-                          alt={`Design Process image for ${metadata?.project_name || project.title}`}
-                          width={1600}
-                          height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
-                          unoptimized
-                        />
+                        <div className="w-full overflow-hidden" style={{ maxHeight: '538px', borderRadius: '0.5rem' }}>
+                          <Image
+                            src={metadata.design_process_image}
+                            alt={`Design Process image for ${metadata?.project_name || project.title}`}
+                            width={1600}
+                            height={800}
+                            className="w-full object-cover cursor-pointer"
+                            style={{ borderRadius: '0.5rem' }}
+                            unoptimized
+                          />
+                        </div>
                       </button>
                     )}
                     {metadata?.design_process_image_2 && (
@@ -257,14 +275,17 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
                         aria-label={`View design process image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <Image
-                          src={metadata.design_process_image_2}
-                          alt={`Design Process image 2 for ${metadata?.project_name || project.title}`}
-                          width={1600}
-                          height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
-                          unoptimized
-                        />
+                        <div className="w-full overflow-hidden" style={{ maxHeight: '538px', borderRadius: '0.5rem' }}>
+                          <Image
+                            src={metadata.design_process_image_2}
+                            alt={`Design Process image 2 for ${metadata?.project_name || project.title}`}
+                            width={1600}
+                            height={800}
+                            className="w-full object-cover cursor-pointer"
+                            style={{ borderRadius: '0.5rem' }}
+                            unoptimized
+                          />
+                        </div>
                       </button>
                     )}
                     {metadata?.design_process_image_3 && (
@@ -273,20 +294,23 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
                         aria-label={`View design process image 3 for ${metadata?.project_name || project.title} in lightbox`}
                       >
-                        <Image
-                          src={metadata.design_process_image_3}
-                          alt={`Design Process image 3 for ${metadata?.project_name || project.title}`}
-                          width={1600}
-                          height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
-                          unoptimized
-                        />
+                        <div className="w-full overflow-hidden" style={{ maxHeight: '538px', borderRadius: '0.5rem' }}>
+                          <Image
+                            src={metadata.design_process_image_3}
+                            alt={`Design Process image 3 for ${metadata?.project_name || project.title}`}
+                            width={1600}
+                            height={800}
+                            className="w-full object-cover cursor-pointer"
+                            style={{ borderRadius: '0.5rem' }}
+                            unoptimized
+                          />
+                        </div>
                       </button>
                     )}
                   </div>
                 )}
                 {metadata?.design_process && (
-                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-5 [&_ul]:mb-6 [&_li]:mb-2 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium [&_blockquote]:bg-gray-100 [&_blockquote]:p-6 [&_blockquote]:rounded-lg [&_blockquote]:text-lg [&_blockquote]:text-gray-700 [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:my-8 [&_blockquote]:not-italic [&_blockquote_p]:text-lg [&_table]:w-full [&_table]:my-8 [&_table]:bg-gray-50 [&_table]:rounded-lg [&_table]:overflow-hidden [&_table]:border [&_table]:border-gray-200 [&_thead]:bg-gray-100 [&_th]:p-4 [&_th]:text-left [&_th]:font-semibold [&_th]:text-gray-900 [&_td]:p-4 [&_td]:border-t [&_td]:border-gray-200 [&_tr]:hover:bg-gray-100 [&_img]:rounded-lg [&_img]:max-h-[538px] [&_img]:object-cover" style={{ lineHeight: '1.6' }}>
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw]}
@@ -305,7 +329,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     {metadata?.solution_image && (
                       <button
                         onClick={() => openLightbox([metadata.solution_image, metadata?.solution_image_2, metadata?.solution_image_3].filter((img): img is string => Boolean(img)), 0)}
-                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
+                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4 overflow-hidden"
+                        style={{ maxHeight: '538px' }}
                         aria-label={`View solution image for ${metadata?.project_name || project.title} in lightbox`}
                       >
                         <Image
@@ -313,7 +338,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Solution image for ${metadata?.project_name || project.title}`}
                           width={1600}
                           height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
+                          className="w-full object-cover rounded-lg cursor-pointer"
                           unoptimized
                         />
                       </button>
@@ -321,7 +346,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     {metadata?.solution_image_2 && (
                       <button
                         onClick={() => { const imgs = [metadata.solution_image, metadata?.solution_image_2, metadata?.solution_image_3].filter((img): img is string => Boolean(img)); openLightbox(imgs, imgs.indexOf(metadata.solution_image_2!)) }}
-                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
+                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4 overflow-hidden"
+                        style={{ maxHeight: '538px' }}
                         aria-label={`View solution image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
                         <Image
@@ -329,7 +355,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Solution image 2 for ${metadata?.project_name || project.title}`}
                           width={1600}
                           height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
+                          className="w-full object-cover rounded-lg cursor-pointer"
                           unoptimized
                         />
                       </button>
@@ -337,7 +363,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     {metadata?.solution_image_3 && (
                       <button
                         onClick={() => { const imgs = [metadata.solution_image, metadata?.solution_image_2, metadata?.solution_image_3].filter((img): img is string => Boolean(img)); openLightbox(imgs, imgs.indexOf(metadata.solution_image_3!)) }}
-                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
+                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg overflow-hidden"
+                        style={{ maxHeight: '538px' }}
                         aria-label={`View solution image 3 for ${metadata?.project_name || project.title} in lightbox`}
                       >
                         <Image
@@ -345,7 +372,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Solution image 3 for ${metadata?.project_name || project.title}`}
                           width={1600}
                           height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
+                          className="w-full object-cover rounded-lg cursor-pointer"
                           unoptimized
                         />
                       </button>
@@ -353,7 +380,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   </div>
                 )}
                 {metadata?.solution && (
-                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-5 [&_ul]:mb-6 [&_li]:mb-2 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium [&_blockquote]:bg-gray-100 [&_blockquote]:p-6 [&_blockquote]:rounded-lg [&_blockquote]:text-lg [&_blockquote]:text-gray-700 [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:my-8 [&_blockquote]:not-italic [&_blockquote_p]:text-lg [&_table]:w-full [&_table]:my-8 [&_table]:bg-gray-50 [&_table]:rounded-lg [&_table]:overflow-hidden [&_table]:border [&_table]:border-gray-200 [&_thead]:bg-gray-100 [&_th]:p-4 [&_th]:text-left [&_th]:font-semibold [&_th]:text-gray-900 [&_td]:p-4 [&_td]:border-t [&_td]:border-gray-200 [&_tr]:hover:bg-gray-100 [&_img]:rounded-lg [&_img]:max-h-[538px] [&_img]:object-cover" style={{ lineHeight: '1.6' }}>
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw]}
@@ -372,7 +399,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     {metadata?.implementation_and_results_image && (
                       <button
                         onClick={() => openLightbox([metadata.implementation_and_results_image, metadata?.implementation_and_results_image_2].filter((img): img is string => Boolean(img)), 0)}
-                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
+                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4 overflow-hidden"
+                        style={{ maxHeight: '538px' }}
                         aria-label={`View implementation & results image for ${metadata?.project_name || project.title} in lightbox`}
                       >
                         <Image
@@ -380,7 +408,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Implementation & Results image for ${metadata?.project_name || project.title}`}
                           width={1600}
                           height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
+                          className="w-full object-cover rounded-lg cursor-pointer"
                           unoptimized
                         />
                       </button>
@@ -388,7 +416,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     {metadata?.implementation_and_results_image_2 && (
                       <button
                         onClick={() => openLightbox([metadata.implementation_and_results_image, metadata?.implementation_and_results_image_2].filter((img): img is string => Boolean(img)), metadata?.implementation_and_results_image ? 1 : 0)}
-                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
+                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg overflow-hidden"
+                        style={{ maxHeight: '538px' }}
                         aria-label={`View implementation & results image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
                         <Image
@@ -396,7 +425,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Implementation & Results image 2 for ${metadata?.project_name || project.title}`}
                           width={1600}
                           height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
+                          className="w-full object-cover rounded-lg cursor-pointer"
                           unoptimized
                         />
                       </button>
@@ -404,7 +433,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   </div>
                 )}
                 {metadata?.implementation_and_results && (
-                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-5 [&_ul]:mb-6 [&_li]:mb-2 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium [&_blockquote]:bg-gray-100 [&_blockquote]:p-6 [&_blockquote]:rounded-lg [&_blockquote]:text-lg [&_blockquote]:text-gray-700 [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:my-8 [&_blockquote]:not-italic [&_blockquote_p]:text-lg [&_table]:w-full [&_table]:my-8 [&_table]:bg-gray-50 [&_table]:rounded-lg [&_table]:overflow-hidden [&_table]:border [&_table]:border-gray-200 [&_thead]:bg-gray-100 [&_th]:p-4 [&_th]:text-left [&_th]:font-semibold [&_th]:text-gray-900 [&_td]:p-4 [&_td]:border-t [&_td]:border-gray-200 [&_tr]:hover:bg-gray-100 [&_img]:rounded-lg [&_img]:max-h-[538px] [&_img]:object-cover" style={{ lineHeight: '1.6' }}>
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw]}
@@ -423,7 +452,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     {metadata?.reflection_image && (
                       <button
                         onClick={() => openLightbox([metadata.reflection_image, metadata?.reflection_image_2].filter((img): img is string => Boolean(img)), 0)}
-                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4"
+                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg mb-4 overflow-hidden"
+                        style={{ maxHeight: '538px' }}
                         aria-label={`View reflection image for ${metadata?.project_name || project.title} in lightbox`}
                       >
                         <Image
@@ -431,7 +461,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Reflection image for ${metadata?.project_name || project.title}`}
                           width={1600}
                           height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
+                          className="w-full object-cover rounded-lg cursor-pointer"
                           unoptimized
                         />
                       </button>
@@ -439,7 +469,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     {metadata?.reflection_image_2 && (
                       <button
                         onClick={() => openLightbox([metadata.reflection_image, metadata?.reflection_image_2].filter((img): img is string => Boolean(img)), metadata?.reflection_image ? 1 : 0)}
-                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
+                        className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg overflow-hidden"
+                        style={{ maxHeight: '538px' }}
                         aria-label={`View reflection image 2 for ${metadata?.project_name || project.title} in lightbox`}
                       >
                         <Image
@@ -447,7 +478,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           alt={`Reflection image 2 for ${metadata?.project_name || project.title}`}
                           width={1600}
                           height={800}
-                          className="w-full object-cover rounded-lg  cursor-pointer"
+                          className="w-full object-cover rounded-lg cursor-pointer"
                           unoptimized
                         />
                       </button>
@@ -455,7 +486,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   </div>
                 )}
                 {metadata?.reflection && (
-                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                  <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-5 [&_ul]:mb-6 [&_li]:mb-2 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium [&_blockquote]:bg-gray-100 [&_blockquote]:p-6 [&_blockquote]:rounded-lg [&_blockquote]:text-lg [&_blockquote]:text-gray-700 [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:my-8 [&_blockquote]:not-italic [&_blockquote_p]:text-lg [&_table]:w-full [&_table]:my-8 [&_table]:bg-gray-50 [&_table]:rounded-lg [&_table]:overflow-hidden [&_table]:border [&_table]:border-gray-200 [&_thead]:bg-gray-100 [&_th]:p-4 [&_th]:text-left [&_th]:font-semibold [&_th]:text-gray-900 [&_td]:p-4 [&_td]:border-t [&_td]:border-gray-200 [&_tr]:hover:bg-gray-100 [&_img]:rounded-lg [&_img]:max-h-[538px] [&_img]:object-cover" style={{ lineHeight: '1.6' }}>
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw]}
@@ -482,7 +513,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   <div style={{ marginTop: '2em', marginBottom: '3em' }}>
                     <button
                       onClick={() => openLightbox([metadata.solution_image].filter((img): img is string => Boolean(img)), 0)}
-                      className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
+                      className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg overflow-hidden"
+                      style={{ maxHeight: '538px' }}
                       aria-label={`View solution image for ${metadata?.project_name || project.title} in lightbox`}
                     >
                       <Image
@@ -490,13 +522,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         alt={`Solution image for ${metadata?.project_name || project.title}`}
                         width={1600}
                         height={800}
-                        className="w-full object-cover rounded-lg  cursor-pointer"
+                        className="w-full object-cover rounded-lg cursor-pointer"
                         unoptimized
                       />
                     </button>
                   </div>
                 )}
-                <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-8 [&_ul]:mb-6 [&_li]:mb-1 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium" style={{ lineHeight: '1.6' }}>
+                <div className="prose max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-black [&_h2]:mt-12 [&_h2]:mb-9 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-6 [&_h4]:mb-5 [&_h5]:mt-4 [&_h5]:mb-4 [&_h6]:mt-4 [&_h6]:mb-3.5 [&_ul]:list-disc [&_ul]:ml-5 [&_ul]:mb-6 [&_li]:mb-2 [&_p]:text-base [&_p]:leading-relaxed [&_p+p]:mt-6 [&_strong]:font-medium [&_blockquote]:bg-gray-100 [&_blockquote]:p-6 [&_blockquote]:rounded-lg [&_blockquote]:text-lg [&_blockquote]:text-gray-700 [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:my-8 [&_blockquote]:not-italic [&_blockquote_p]:text-lg [&_table]:w-full [&_table]:my-8 [&_table]:bg-gray-50 [&_table]:rounded-lg [&_table]:overflow-hidden [&_table]:border [&_table]:border-gray-200 [&_thead]:bg-gray-100 [&_th]:p-4 [&_th]:text-left [&_th]:font-semibold [&_th]:text-gray-900 [&_td]:p-4 [&_td]:border-t [&_td]:border-gray-200 [&_tr]:hover:bg-gray-100 [&_img]:rounded-lg [&_img]:max-h-[538px] [&_img]:object-cover" style={{ lineHeight: '1.6' }}>
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
@@ -693,7 +725,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           <div className="w-full">
                             <video
                               src={imageUrl}
-                              className="w-full h-auto object-cover rounded-lg "
+                              className="w-full h-auto object-cover rounded-lg"
+                              style={{ maxHeight: '538px' }}
                               autoPlay
                               loop
                               muted
@@ -706,7 +739,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           // Render image with lightbox
                           <button
                             onClick={() => openLightbox(allImages.filter(url => !url.toLowerCase().match(/\.(mp4|webm|ogg|mov)(\?.*)?$/)), allImages.filter(url => !url.toLowerCase().match(/\.(mp4|webm|ogg|mov)(\?.*)?$/)).indexOf(imageUrl))}
-                            className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
+                            className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg overflow-hidden"
+                            style={{ maxHeight: '538px' }}
                             aria-label={`View ${metadata?.project_name || project.title} screenshot ${index + 1} in lightbox`}
                           >
                             <Image
@@ -730,7 +764,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                       <div key={index} role="listitem">
                         <button
                           onClick={() => openLightbox(cloudinaryImages, index)}
-                          className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
+                          className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg overflow-hidden"
+                          style={{ maxHeight: '538px' }}
                           aria-label={`View ${metadata?.project_name || project.title} screenshot ${index + 1} in lightbox`}
                         >
                           <Image
@@ -738,7 +773,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                             alt={`${metadata?.project_name || project.title} project screenshot ${index + 1}`}
                             width={800}
                             height={500}
-                            className="w-full h-64 object-cover rounded-lg  cursor-pointer"
+                            className="w-full object-cover rounded-lg cursor-pointer"
                             unoptimized
                           />
                         </button>
@@ -753,7 +788,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                       <div key={index} role="listitem">
                         <button
                           onClick={() => openLightbox(originalImages, index)}
-                          className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
+                          className="w-full group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg overflow-hidden"
+                          style={{ maxHeight: '538px' }}
                           aria-label={`View ${metadata?.project_name || project.title} screenshot ${index + 1} in lightbox`}
                         >
                           <Image
@@ -761,7 +797,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                             alt={`${metadata?.project_name || project.title} project screenshot ${index + 1}`}
                             width={800}
                             height={500}
-                            className="w-full h-64 object-cover rounded-lg  cursor-pointer"
+                            className="w-full object-cover rounded-lg cursor-pointer"
                             unoptimized
                           />
                         </button>

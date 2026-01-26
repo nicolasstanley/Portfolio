@@ -101,6 +101,8 @@ export interface Project extends CosmicObject {
     project_duration?: string;
     client_company?: string;
     thumbnail?: string;
+    featured_image?: string;
+    cloudinary_featured_image?: string;
     hero_image?: string;
     cloudinary_hero_image?: string;
     featured_video?: {
